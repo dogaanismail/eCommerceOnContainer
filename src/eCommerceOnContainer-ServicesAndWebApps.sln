@@ -1,0 +1,50 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.0.31919.166
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "src", "src", "{932D8224-11F6-4D07-B109-DA28AD288A63}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Services", "Services", "{036178E2-27E4-4D0B-B034-02745F8190BB}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "ApiGateways", "ApiGateways", "{1F695341-41B3-4490-9FEB-73342C76ADFF}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "BuildingBlocks", "BuildingBlocks", "{50FE2C66-54C1-4CA7-9198-5CDAEF544E9A}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Web Apps", "Web Apps", "{3A7D54D5-1CA0-48DC-8C4A-33A0DE769E6F}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "tests", "tests", "{85373FEE-18D4-4FBA-8EDB-73ACB952A62D}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "ServiceTests", "ServiceTests", "{AAF60640-F0A1-4DD2-A6CF-692DCC2A03B2}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Identity", "Identity", "{AF4B22E7-FEB3-425F-98A7-2B51515D6801}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Identity.API", "Services\Identity\Identity.API\Identity.API.csproj", "{AD938DB0-252B-4CF1-84F7-4358C7DF3452}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{AD938DB0-252B-4CF1-84F7-4358C7DF3452}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{AD938DB0-252B-4CF1-84F7-4358C7DF3452}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{AD938DB0-252B-4CF1-84F7-4358C7DF3452}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{AD938DB0-252B-4CF1-84F7-4358C7DF3452}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{036178E2-27E4-4D0B-B034-02745F8190BB} = {932D8224-11F6-4D07-B109-DA28AD288A63}
+		{1F695341-41B3-4490-9FEB-73342C76ADFF} = {932D8224-11F6-4D07-B109-DA28AD288A63}
+		{50FE2C66-54C1-4CA7-9198-5CDAEF544E9A} = {932D8224-11F6-4D07-B109-DA28AD288A63}
+		{3A7D54D5-1CA0-48DC-8C4A-33A0DE769E6F} = {932D8224-11F6-4D07-B109-DA28AD288A63}
+		{AAF60640-F0A1-4DD2-A6CF-692DCC2A03B2} = {85373FEE-18D4-4FBA-8EDB-73ACB952A62D}
+		{AF4B22E7-FEB3-425F-98A7-2B51515D6801} = {036178E2-27E4-4D0B-B034-02745F8190BB}
+		{AD938DB0-252B-4CF1-84F7-4358C7DF3452} = {AF4B22E7-FEB3-425F-98A7-2B51515D6801}
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {F60F1DAF-C283-44EA-A3FB-29B705ECAEBA}
+	EndGlobalSection
+EndGlobal
