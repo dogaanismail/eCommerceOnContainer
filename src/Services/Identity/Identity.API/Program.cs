@@ -1,41 +1,90 @@
-var builder = WebApplication.CreateBuilder(args);
+string Namespace = typeof(Startup).Namespace;
+string AppName = Namespace.Substring(Namespace.LastIndexOf('.', Namespace.LastIndexOf('.') - 1) + 1);
 
-// Add services to the container.
-// Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
-builder.Services.AddEndpointsApiExplorer();
-builder.Services.AddSwaggerGen();
+var configuration = GetConfiguration();
 
-var app = builder.Build();
+Log.Logger = CreateSerilogLogger(configuration);
 
-// Configure the HTTP request pipeline.
-if (app.Environment.IsDevelopment())
+try
 {
-    app.UseSwagger();
-    app.UseSwaggerUI();
+    Log.Information("Configuring web host ({ApplicationContext})...", AppName);
+    var host = BuildWebHost(configuration, args);
+
+    Log.Information("Applying migrations ({ApplicationContext})...", AppName);
+    host.MigrateDbContext<PersistedGrantDbContext>((_, __) => { })
+        .MigrateDbContext<ApplicationDbContext>((context, services) =>
+        {
+            var env = services.GetService<IWebHostEnvironment>();
+            var logger = services.GetService<ILogger<ApplicationDbContextSeed>>();
+            var settings = services.GetService<IOptions<AppSettings>>();
+
+            new ApplicationDbContextSeed()
+                .SeedAsync(context, env, logger, settings)
+                .Wait();
+        })
+        .MigrateDbContext<ConfigurationDbContext>((context, services) =>
+        {
+            new ConfigurationDbContextSeed()
+                .SeedAsync(context, configuration)
+                .Wait();
+        });
+
+    Log.Information("Starting web host ({ApplicationContext})...", AppName);
+    host.Run();
+
+    return 0;
+}
+catch (Exception ex)
+{
+    Log.Fatal(ex, "Program terminated unexpectedly ({ApplicationContext})!", AppName);
+    return 1;
+}
+finally
+{
+    Log.CloseAndFlush();
 }
 
-var summaries = new[]
-{
-    "Freezing", "Bracing", "Chilly", "Cool", "Mild", "Warm", "Balmy", "Hot", "Sweltering", "Scorching"
-};
+IWebHost BuildWebHost(IConfiguration configuration, string[] args) =>
+    WebHost.CreateDefaultBuilder(args)
+        .CaptureStartupErrors(false)
+        .ConfigureAppConfiguration(x => x.AddConfiguration(configuration))
+        .UseStartup<Startup>()
+        .UseContentRoot(Directory.GetCurrentDirectory())
+        .UseSerilog()
+        .Build();
 
-app.MapGet("/weatherforecast", () =>
+Serilog.ILogger CreateSerilogLogger(IConfiguration configuration)
 {
-    var forecast = Enumerable.Range(1, 5).Select(index =>
-       new WeatherForecast
-       (
-           DateTime.Now.AddDays(index),
-           Random.Shared.Next(-20, 55),
-           summaries[Random.Shared.Next(summaries.Length)]
-       ))
-        .ToArray();
-    return forecast;
-})
-.WithName("GetWeatherForecast");
+    var seqServerUrl = configuration["Serilog:SeqServerUrl"];
+    var logstashUrl = configuration["Serilog:LogstashgUrl"];
+    return new LoggerConfiguration()
+        .MinimumLevel.Verbose()
+        .Enrich.WithProperty("ApplicationContext", AppName)
+        .Enrich.FromLogContext()
+        .WriteTo.Console()
+        .WriteTo.Seq(string.IsNullOrWhiteSpace(seqServerUrl) ? "http://seq" : seqServerUrl)
+        .WriteTo.Http(string.IsNullOrWhiteSpace(logstashUrl) ? "http://localhost:8080" : logstashUrl)
+        .ReadFrom.Configuration(configuration)
+        .CreateLogger();
+}
 
-app.Run();
-
-internal record WeatherForecast(DateTime Date, int TemperatureC, string? Summary)
+IConfiguration GetConfiguration()
 {
-    public int TemperatureF => 32 + (int)(TemperatureC / 0.5556);
+    var builder = new ConfigurationBuilder()
+        .SetBasePath(Directory.GetCurrentDirectory())
+        .AddJsonFile("appsettings.json", optional: false, reloadOnChange: true)
+        .AddEnvironmentVariables();
+
+    var config = builder.Build();
+
+    if (config.GetValue<bool>("UseVault", false))
+    {
+        TokenCredential credential = new ClientSecretCredential(
+            config["Vault:TenantId"],
+            config["Vault:ClientId"],
+            config["Vault:ClientSecret"]);
+        builder.AddAzureKeyVault(new Uri($"https://{config["Vault:Name"]}.vault.azure.net/"), credential);
+    }
+
+    return builder.Build();
 }
