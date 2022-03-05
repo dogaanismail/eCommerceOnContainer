@@ -47,8 +47,8 @@ namespace Microsoft.eCommerceOnContainers.Services.Identity.API
                     name: "IdentityDB-check",
                     tags: new string[] { "IdentityDB" });
 
-            //services.AddTransient<ILoginService<ApplicationUser>, EFLoginService>();
-            //services.AddTransient<IRedirectService, RedirectService>();
+            services.AddTransient<ILoginService<ApplicationUser>, EFLoginService>();
+            services.AddTransient<IRedirectService, RedirectService>();
 
             var connectionString = Configuration["ConnectionString"];
             var migrationsAssembly = typeof(Startup).GetTypeInfo().Assembly.GetName().Name;
@@ -81,8 +81,8 @@ namespace Microsoft.eCommerceOnContainers.Services.Identity.API
                         //Configuring Connection Resiliency: https://docs.microsoft.com/en-us/ef/core/miscellaneous/connection-resiliency 
                         sqlOptions.EnableRetryOnFailure(maxRetryCount: 15, maxRetryDelay: TimeSpan.FromSeconds(30), errorNumbersToAdd: null);
                     });
-            });
-            //.Services.AddTransient<IProfileService, ProfileService>();
+            })
+            .Services.AddTransient<IProfileService, ProfileService>();
 
             //services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_3_0);
             services.AddControllers();

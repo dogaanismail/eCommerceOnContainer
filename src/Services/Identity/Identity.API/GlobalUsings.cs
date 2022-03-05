@@ -35,7 +35,7 @@ global using Microsoft.eCommerceOnContainers.Services.Identity.API.Data;
 global using Microsoft.eCommerceOnContainers.Services.Identity.API.Devspaces;
 global using Microsoft.eCommerceOnContainers.Services.Identity.API.Models.AccountViewModels;
 global using Microsoft.eCommerceOnContainers.Services.Identity.API.Models;
-//global using Microsoft.eCommerceOnContainers.Services.Identity.API.Services;
+global using Microsoft.eCommerceOnContainers.Services.Identity.API.Services;
 global using Microsoft.eCommerceOnContainers.Services.Identity.API;
 global using Microsoft.Extensions.Configuration;
 global using Microsoft.Extensions.DependencyInjection;
