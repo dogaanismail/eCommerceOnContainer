@@ -1,28 +1,25 @@
 ﻿{
-  "$schema": "https://json.schemastore.org/launchsettings.json",
   "iisSettings": {
     "windowsAuthentication": false,
     "anonymousAuthentication": true,
     "iisExpress": {
-      "applicationUrl": "http://localhost:25431",
+      "applicationUrl": "http://localhost:54010/",
       "sslPort": 0
     }
   },
   "profiles": {
-    "Identity.API": {
-      "commandName": "Project",
-      "dotnetRunMessages": true,
+    "IIS Express": {
+      "commandName": "IISExpress",
       "launchBrowser": true,
-      "launchUrl": "swagger",
-      "applicationUrl": "http://localhost:5113",
+      "launchUrl": "http://localhost:55105",
       "environmentVariables": {
         "ASPNETCORE_ENVIRONMENT": "Development"
       }
     },
-    "IIS Express": {
-      "commandName": "IISExpress",
+    "eCommerceOnContainers.Identity": {
+      "commandName": "Project",
       "launchBrowser": true,
-      "launchUrl": "swagger",
+      "launchUrl": "http://localhost:55105",
       "environmentVariables": {
         "ASPNETCORE_ENVIRONMENT": "Development"
       }
