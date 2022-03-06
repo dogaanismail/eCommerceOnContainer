@@ -8,19 +8,20 @@ namespace Microsoft.eCommerceOnContainers.Services.Identity.API.Data
         {
 
             //callbacks urls from config:
-            var clientUrls = new Dictionary<string, string>();
+            var clientUrls = new Dictionary<string, string>
+            {
+                { "Mvc", configuration.GetValue<string>("MvcClient") },
+                { "Spa", configuration.GetValue<string>("SpaClient") },
+                { "Xamarin", configuration.GetValue<string>("XamarinCallback") },
+                { "BasketApi", configuration.GetValue<string>("BasketApiClient") },
+                { "OrderingApi", configuration.GetValue<string>("OrderingApiClient") },
+                { "MobileShoppingAgg", configuration.GetValue<string>("MobileShoppingAggClient") },
+                { "WebShoppingAgg", configuration.GetValue<string>("WebShoppingAggClient") },
+                { "WebhooksApi", configuration.GetValue<string>("WebhooksApiClient") },
+                { "WebhooksWeb", configuration.GetValue<string>("WebhooksWebClient") }
+            };
 
-            clientUrls.Add("Mvc", configuration.GetValue<string>("MvcClient"));
-            clientUrls.Add("Spa", configuration.GetValue<string>("SpaClient"));
-            clientUrls.Add("Xamarin", configuration.GetValue<string>("XamarinCallback"));
-            clientUrls.Add("BasketApi", configuration.GetValue<string>("BasketApiClient"));
-            clientUrls.Add("OrderingApi", configuration.GetValue<string>("OrderingApiClient"));
-            clientUrls.Add("MobileShoppingAgg", configuration.GetValue<string>("MobileShoppingAggClient"));
-            clientUrls.Add("WebShoppingAgg", configuration.GetValue<string>("WebShoppingAggClient"));
-            clientUrls.Add("WebhooksApi", configuration.GetValue<string>("WebhooksApiClient"));
-            clientUrls.Add("WebhooksWeb", configuration.GetValue<string>("WebhooksWebClient"));
-
-            if (!context.Clients.Any())
+            if (context.Clients != null && !context.Clients.Any())
             {
                 foreach (var client in Config.GetClients(clientUrls))
                 {

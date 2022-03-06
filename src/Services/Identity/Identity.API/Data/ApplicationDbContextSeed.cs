@@ -5,8 +5,10 @@
     {
         private readonly IPasswordHasher<ApplicationUser> _passwordHasher = new PasswordHasher<ApplicationUser>();
 
-        public async Task SeedAsync(ApplicationDbContext context, IWebHostEnvironment env,
-            ILogger<ApplicationDbContextSeed> logger, IOptions<AppSettings> settings, int? retry = 0)
+        public async Task SeedAsync(ApplicationDbContext context, 
+            IWebHostEnvironment env,
+            ILogger<ApplicationDbContextSeed> logger, 
+            IOptions<AppSettings> settings, int? retry = 0)
         {
             int retryForAvaiability = retry.Value;
 
