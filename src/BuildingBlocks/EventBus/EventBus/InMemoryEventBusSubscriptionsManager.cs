@@ -59,14 +59,12 @@ public partial class InMemoryEventBusSubscriptionsManager : IEventBusSubscriptio
         }
     }
 
-
     public void RemoveDynamicSubscription<TH>(string eventName)
         where TH : IDynamicIntegrationEventHandler
     {
         var handlerToRemove = FindDynamicSubscriptionToRemove<TH>(eventName);
         DoRemoveHandler(eventName, handlerToRemove);
     }
-
 
     public void RemoveSubscription<T, TH>()
         where TH : IIntegrationEventHandler<T>
@@ -76,7 +74,6 @@ public partial class InMemoryEventBusSubscriptionsManager : IEventBusSubscriptio
         var eventName = GetEventKey<T>();
         DoRemoveHandler(eventName, handlerToRemove);
     }
-
 
     private void DoRemoveHandler(string eventName, SubscriptionInfo subsToRemove)
     {
@@ -110,13 +107,11 @@ public partial class InMemoryEventBusSubscriptionsManager : IEventBusSubscriptio
         handler?.Invoke(this, eventName);
     }
 
-
     private SubscriptionInfo FindDynamicSubscriptionToRemove<TH>(string eventName)
         where TH : IDynamicIntegrationEventHandler
     {
         return DoFindSubscriptionToRemove(eventName, typeof(TH));
     }
-
 
     private SubscriptionInfo FindSubscriptionToRemove<T, TH>()
             where T : IntegrationEvent
