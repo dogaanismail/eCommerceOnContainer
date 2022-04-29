@@ -2,16 +2,25 @@
 
 public partial class InMemoryEventBusSubscriptionsManager : IEventBusSubscriptionsManager
 {
+    #region Fields
+
     private readonly Dictionary<string, List<SubscriptionInfo>> _handlers;
     private readonly List<Type> _eventTypes;
-
     public event EventHandler<string> OnEventRemoved;
+
+    #endregion
+
+    #region Ctor
 
     public InMemoryEventBusSubscriptionsManager()
     {
         _handlers = new Dictionary<string, List<SubscriptionInfo>>();
         _eventTypes = new List<Type>();
     }
+
+    #endregion
+
+    #region Methods
 
     public bool IsEmpty => _handlers is { Count: 0 };
     public void Clear() => _handlers.Clear();
@@ -145,4 +154,6 @@ public partial class InMemoryEventBusSubscriptionsManager : IEventBusSubscriptio
     {
         return typeof(T).Name;
     }
+
+    #endregion
 }
