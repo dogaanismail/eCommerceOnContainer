@@ -33,6 +33,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EventBusRabbitMQ", "Buildin
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EventBusServiceBus", "BuildingBlocks\EventBus\EventBusServiceBus\EventBusServiceBus.csproj", "{B04A50A9-EA4E-4C11-9DCA-9E64049CB20F}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "IntegrationEventLogEF", "BuildingBlocks\EventBus\IntegrationEventLogEF\IntegrationEventLogEF.csproj", "{5B37B5FF-531C-4541-9386-20B9A24E2CE2}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -59,6 +61,10 @@ Global
 		{B04A50A9-EA4E-4C11-9DCA-9E64049CB20F}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{B04A50A9-EA4E-4C11-9DCA-9E64049CB20F}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{B04A50A9-EA4E-4C11-9DCA-9E64049CB20F}.Release|Any CPU.Build.0 = Release|Any CPU
+		{5B37B5FF-531C-4541-9386-20B9A24E2CE2}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{5B37B5FF-531C-4541-9386-20B9A24E2CE2}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{5B37B5FF-531C-4541-9386-20B9A24E2CE2}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{5B37B5FF-531C-4541-9386-20B9A24E2CE2}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -77,6 +83,7 @@ Global
 		{7C721B02-7C01-4F35-9AAB-7A700E3C8293} = {F3918195-E9B5-42F8-B51A-5931BB7C361F}
 		{93AC63AB-DCAB-4DFE-80ED-5949C3FA36E8} = {F3918195-E9B5-42F8-B51A-5931BB7C361F}
 		{B04A50A9-EA4E-4C11-9DCA-9E64049CB20F} = {F3918195-E9B5-42F8-B51A-5931BB7C361F}
+		{5B37B5FF-531C-4541-9386-20B9A24E2CE2} = {F3918195-E9B5-42F8-B51A-5931BB7C361F}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {F60F1DAF-C283-44EA-A3FB-29B705ECAEBA}
