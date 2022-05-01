@@ -26,13 +26,12 @@ public class Startup
             .AddCustomConfiguration(Configuration)
             .AddEventBus(Configuration)
             .AddCustomAuthentication(Configuration);
-        //configure autofac
 
         var container = new ContainerBuilder();
         container.Populate(services);
 
-        //container.RegisterModule(new MediatorModule());
-        //container.RegisterModule(new ApplicationModule(Configuration["ConnectionString"]));
+        container.RegisterModule(new MediatorModule());
+        container.RegisterModule(new ApplicationModule(Configuration["ConnectionString"]));
 
         return new AutofacServiceProvider(container.Build());
     }
@@ -64,7 +63,7 @@ public class Startup
 
         app.UseEndpoints(endpoints =>
         {
-            //endpoints.MapGrpcService<OrderingService>();
+            endpoints.MapGrpcService<OrderingService>();
             endpoints.MapDefaultControllerRoute();
             endpoints.MapControllers();
             endpoints.MapGet("/_proto/", async ctx =>
@@ -100,12 +99,12 @@ public class Startup
     {
         var eventBus = app.ApplicationServices.GetRequiredService<BuildingBlocks.EventBus.Abstractions.IEventBus>();
 
-        //eventBus.Subscribe<UserCheckoutAcceptedIntegrationEvent, IIntegrationEventHandler<UserCheckoutAcceptedIntegrationEvent>>();
-        //eventBus.Subscribe<GracePeriodConfirmedIntegrationEvent, IIntegrationEventHandler<GracePeriodConfirmedIntegrationEvent>>();
-        //eventBus.Subscribe<OrderStockConfirmedIntegrationEvent, IIntegrationEventHandler<OrderStockConfirmedIntegrationEvent>>();
-        //eventBus.Subscribe<OrderStockRejectedIntegrationEvent, IIntegrationEventHandler<OrderStockRejectedIntegrationEvent>>();
-        //eventBus.Subscribe<OrderPaymentFailedIntegrationEvent, IIntegrationEventHandler<OrderPaymentFailedIntegrationEvent>>();
-        //eventBus.Subscribe<OrderPaymentSucceededIntegrationEvent, IIntegrationEventHandler<OrderPaymentSucceededIntegrationEvent>>();
+        eventBus.Subscribe<UserCheckoutAcceptedIntegrationEvent, IIntegrationEventHandler<UserCheckoutAcceptedIntegrationEvent>>();
+        eventBus.Subscribe<GracePeriodConfirmedIntegrationEvent, IIntegrationEventHandler<GracePeriodConfirmedIntegrationEvent>>();
+        eventBus.Subscribe<OrderStockConfirmedIntegrationEvent, IIntegrationEventHandler<OrderStockConfirmedIntegrationEvent>>();
+        eventBus.Subscribe<OrderStockRejectedIntegrationEvent, IIntegrationEventHandler<OrderStockRejectedIntegrationEvent>>();
+        eventBus.Subscribe<OrderPaymentFailedIntegrationEvent, IIntegrationEventHandler<OrderPaymentFailedIntegrationEvent>>();
+        eventBus.Subscribe<OrderPaymentSucceededIntegrationEvent, IIntegrationEventHandler<OrderPaymentSucceededIntegrationEvent>>();
     }
 
     protected virtual void ConfigureAuth(IApplicationBuilder app)
@@ -127,25 +126,26 @@ static class CustomExtensionsMethods
 
     public static IServiceCollection AddCustomMvc(this IServiceCollection services)
     {
-        // Add framework services.
-        //services.AddControllers(options =>
-        //{
-        //    options.Filters.Add(typeof(HttpGlobalExceptionFilter));
-        //})
-        //    // Added for functional tests
-        //    .AddApplicationPart(typeof(OrdersController).Assembly)
-        //    .AddJsonOptions(options => options.JsonSerializerOptions.WriteIndented = true)
-        //    .SetCompatibilityVersion(CompatibilityVersion.Version_3_0);
+#pragma warning disable ASP5001 // Type or member is obsolete
+        services.AddControllers(options =>
+       {
+           options.Filters.Add(typeof(HttpGlobalExceptionFilter));
+       })
+           // Added for functional tests
+           .AddApplicationPart(typeof(OrdersController).Assembly)
+           .AddJsonOptions(options => options.JsonSerializerOptions.WriteIndented = true)
+           .SetCompatibilityVersion(CompatibilityVersion.Version_3_0);
+#pragma warning restore ASP5001 // Type or member is obsolete
 
-        //services.AddCors(options =>
-        //{
-        //    options.AddPolicy("CorsPolicy",
-        //        builder => builder
-        //        .SetIsOriginAllowed((host) => true)
-        //        .AllowAnyMethod()
-        //        .AllowAnyHeader()
-        //        .AllowCredentials());
-        //});
+        services.AddCors(options =>
+        {
+            options.AddPolicy("CorsPolicy",
+                builder => builder
+                .SetIsOriginAllowed((host) => true)
+                .AllowAnyMethod()
+                .AllowAnyHeader()
+                .AllowCredentials());
+        });
 
         return services;
     }
@@ -238,7 +238,7 @@ static class CustomExtensionsMethods
                 }
             });
 
-            //options.OperationFilter<AuthorizeCheckOperationFilter>();
+            options.OperationFilter<AuthorizeCheckOperationFilter>();
         });
 
         return services;
@@ -270,7 +270,6 @@ static class CustomExtensionsMethods
             {
                 var logger = sp.GetRequiredService<ILogger<DefaultRabbitMQPersistentConnection>>();
 
-
                 var factory = new ConnectionFactory()
                 {
                     HostName = configuration["EventBusConnection"],
@@ -278,20 +277,15 @@ static class CustomExtensionsMethods
                 };
 
                 if (!string.IsNullOrEmpty(configuration["EventBusUserName"]))
-                {
                     factory.UserName = configuration["EventBusUserName"];
-                }
 
                 if (!string.IsNullOrEmpty(configuration["EventBusPassword"]))
-                {
                     factory.Password = configuration["EventBusPassword"];
-                }
 
                 var retryCount = 5;
+
                 if (!string.IsNullOrEmpty(configuration["EventBusRetryCount"]))
-                {
                     retryCount = int.Parse(configuration["EventBusRetryCount"]);
-                }
 
                 return new DefaultRabbitMQPersistentConnection(factory, logger, retryCount);
             });

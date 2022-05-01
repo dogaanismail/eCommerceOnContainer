@@ -12,11 +12,9 @@ try
     {
         var env = services.GetService<IWebHostEnvironment>();
         var settings = services.GetService<IOptions<OrderingSettings>>();
-        //var logger = services.GetService<ILogger<OrderingContextSeed>>();
+        var logger = services.GetService<ILogger<OrderingContextSeed>>();
 
-        //new OrderingContextSeed()
-        //    .SeedAsync(context, env, settings, logger)
-        //    .Wait();
+        new OrderingContextSeed().SeedAsync(context, env, settings, logger).Wait();
     })
     .MigrateDbContext<IntegrationEventLogContext>((_, __) => { });
 
@@ -36,9 +34,7 @@ finally
 }
 
 IWebHost BuildWebHost(IConfiguration configuration, string[] args) =>
-    WebHost.CreateDefaultBuilder(args)
-        .CaptureStartupErrors(false)
-        .ConfigureKestrel(options =>
+    WebHost.CreateDefaultBuilder(args).CaptureStartupErrors(false).ConfigureKestrel(options =>
         {
             var ports = GetDefinedPorts(configuration);
             options.Listen(IPAddress.Any, ports.httpPort, listenOptions =>
