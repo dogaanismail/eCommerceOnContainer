@@ -1,10 +1,9 @@
-﻿//global using global::Microsoft.eShopOnContainers.Services.Ordering.Domain.Exceptions;
+﻿global using global::Microsoft.eCommerceOnContainers.Services.Ordering.Domain.Exceptions;
 global using MediatR;
-global using Microsoft.eCommerceOnContainers.Services.Ordering.Domain.Seedwork;
-//global using Microsoft.eShopOnContainers.Services.Ordering.Domain.AggregatesModel.BuyerAggregate;
-//global using Microsoft.eShopOnContainers.Services.Ordering.Domain.AggregatesModel.OrderAggregate;
-//global using Microsoft.eShopOnContainers.Services.Ordering.Domain.Events;
-//global using Microsoft.eShopOnContainers.Services.Ordering.Domain.Exceptions;
+global using Microsoft.eCommerceOnContainers.Services.Ordering.Domain.SeedWork;
+global using Microsoft.eCommerceOnContainers.Services.Ordering.Domain.AggregatesModel.BuyerAggregate;
+global using Microsoft.eCommerceOnContainers.Services.Ordering.Domain.AggregatesModel.OrderAggregate;
+global using Microsoft.eCommerceOnContainers.Services.Ordering.Domain.Events;
 global using System.Collections.Generic;
 global using System.Linq;
 global using System.Reflection;
