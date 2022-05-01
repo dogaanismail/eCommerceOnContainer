@@ -2,8 +2,13 @@
 
 public class OrderStartedIntegrationEventHandler : IIntegrationEventHandler<OrderStartedIntegrationEvent>
 {
+    #region Fields
     private readonly IBasketRepository _repository;
     private readonly ILogger<OrderStartedIntegrationEventHandler> _logger;
+
+    #endregion
+
+    #region Ctor
 
     public OrderStartedIntegrationEventHandler(
         IBasketRepository repository,
@@ -12,6 +17,10 @@ public class OrderStartedIntegrationEventHandler : IIntegrationEventHandler<Orde
         _repository = repository ?? throw new ArgumentNullException(nameof(repository));
         _logger = logger ?? throw new ArgumentNullException(nameof(logger));
     }
+
+    #endregion
+
+    #region Handle Method
 
     public async Task Handle(OrderStartedIntegrationEvent @event)
     {
@@ -22,6 +31,8 @@ public class OrderStartedIntegrationEventHandler : IIntegrationEventHandler<Orde
             await _repository.DeleteBasketAsync(@event.UserId.ToString());
         }
     }
+
+    #endregion
 }
 
 

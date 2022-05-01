@@ -99,27 +99,21 @@ public class Startup
                 };
 
                 if (!string.IsNullOrEmpty(Configuration["EventBusUserName"]))
-                {
                     factory.UserName = Configuration["EventBusUserName"];
-                }
-
-                if (!string.IsNullOrEmpty(Configuration["EventBusPassword"]))
-                {
+                
+                if (!string.IsNullOrEmpty(Configuration["EventBusPassword"])) 
                     factory.Password = Configuration["EventBusPassword"];
-                }
-
+                
                 var retryCount = 5;
-                if (!string.IsNullOrEmpty(Configuration["EventBusRetryCount"]))
-                {
-                    retryCount = int.Parse(Configuration["EventBusRetryCount"]);
-                }
 
+                if (!string.IsNullOrEmpty(Configuration["EventBusRetryCount"]))
+                    retryCount = int.Parse(Configuration["EventBusRetryCount"]);
+                
                 return new DefaultRabbitMQPersistentConnection(factory, logger, retryCount);
             });
         }
 
         RegisterEventBus(services);
-
 
         services.AddCors(options =>
         {

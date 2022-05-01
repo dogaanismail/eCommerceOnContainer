@@ -2,8 +2,13 @@
 
 public class ProductPriceChangedIntegrationEventHandler : IIntegrationEventHandler<ProductPriceChangedIntegrationEvent>
 {
+    #region Fields
     private readonly ILogger<ProductPriceChangedIntegrationEventHandler> _logger;
     private readonly IBasketRepository _repository;
+
+    #endregion
+
+    #region Ctor
 
     public ProductPriceChangedIntegrationEventHandler(
         ILogger<ProductPriceChangedIntegrationEventHandler> logger,
@@ -12,6 +17,10 @@ public class ProductPriceChangedIntegrationEventHandler : IIntegrationEventHandl
         _logger = logger ?? throw new ArgumentNullException(nameof(logger));
         _repository = repository ?? throw new ArgumentNullException(nameof(repository));
     }
+
+    #endregion
+
+    #region Handle Method
 
     public async Task Handle(ProductPriceChangedIntegrationEvent @event)
     {
@@ -29,6 +38,10 @@ public class ProductPriceChangedIntegrationEventHandler : IIntegrationEventHandl
             }
         }
     }
+
+    #endregion
+
+    #region Private Methods
 
     private async Task UpdatePriceInBasketItems(int productId, decimal newPrice, decimal oldPrice, CustomerBasket basket)
     {
@@ -50,4 +63,6 @@ public class ProductPriceChangedIntegrationEventHandler : IIntegrationEventHandl
             await _repository.UpdateBasketAsync(basket);
         }
     }
+
+    #endregion
 }

@@ -2,16 +2,26 @@
 
 public class RedisBasketRepository : IBasketRepository
 {
+    #region Fields
     private readonly ILogger<RedisBasketRepository> _logger;
     private readonly ConnectionMultiplexer _redis;
     private readonly IDatabase _database;
 
-    public RedisBasketRepository(ILoggerFactory loggerFactory, ConnectionMultiplexer redis)
+    #endregion
+
+    #region Ctor
+
+    public RedisBasketRepository(ILoggerFactory loggerFactory, 
+        ConnectionMultiplexer redis)
     {
         _logger = loggerFactory.CreateLogger<RedisBasketRepository>();
         _redis = redis;
         _database = redis.GetDatabase();
     }
+
+    #endregion
+
+    #region Methods
 
     public async Task<bool> DeleteBasketAsync(string id)
     {
@@ -61,4 +71,6 @@ public class RedisBasketRepository : IBasketRepository
         var endpoint = _redis.GetEndPoints();
         return _redis.GetServer(endpoint.First());
     }
+
+    #endregion
 }

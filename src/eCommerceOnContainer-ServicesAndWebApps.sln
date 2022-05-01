@@ -72,6 +72,10 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Basket.UnitTests", "Service
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Basket.FunctionalTests", "Services\Basket\Basket.FunctionalTests\Basket.FunctionalTests.csproj", "{74959FA1-C75D-4CCD-BA0D-DA12A53946A1}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Payment", "Payment", "{9948DAA5-11D5-4EF6-AF2D-A38E139A3A6F}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Payment.API", "Services\Payment\Payment.API\Payment.API.csproj", "{58948991-16C1-487A-8BFE-9F78E529D718}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -146,6 +150,10 @@ Global
 		{74959FA1-C75D-4CCD-BA0D-DA12A53946A1}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{74959FA1-C75D-4CCD-BA0D-DA12A53946A1}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{74959FA1-C75D-4CCD-BA0D-DA12A53946A1}.Release|Any CPU.Build.0 = Release|Any CPU
+		{58948991-16C1-487A-8BFE-9F78E529D718}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{58948991-16C1-487A-8BFE-9F78E529D718}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{58948991-16C1-487A-8BFE-9F78E529D718}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{58948991-16C1-487A-8BFE-9F78E529D718}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -181,6 +189,8 @@ Global
 		{8DCB7BB2-CEEE-40EE-B841-665AEB80F268} = {537F51B3-5E52-491A-A466-1B4262AEA2C6}
 		{EB5E91E6-BEFC-43CE-9F9C-1A79DCBCFBEF} = {8DCB7BB2-CEEE-40EE-B841-665AEB80F268}
 		{74959FA1-C75D-4CCD-BA0D-DA12A53946A1} = {8DCB7BB2-CEEE-40EE-B841-665AEB80F268}
+		{9948DAA5-11D5-4EF6-AF2D-A38E139A3A6F} = {036178E2-27E4-4D0B-B034-02745F8190BB}
+		{58948991-16C1-487A-8BFE-9F78E529D718} = {9948DAA5-11D5-4EF6-AF2D-A38E139A3A6F}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {F60F1DAF-C283-44EA-A3FB-29B705ECAEBA}
