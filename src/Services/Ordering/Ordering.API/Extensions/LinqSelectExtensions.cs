@@ -15,6 +15,7 @@ public static class LinqSelectExtensions
             {
                 returnedValue = new SelectTryResult<TSource, TResult>(element, default(TResult), ex);
             }
+
             yield return returnedValue;
         }
     }
