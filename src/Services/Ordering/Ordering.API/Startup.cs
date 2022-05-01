@@ -217,7 +217,7 @@ static class CustomExtensionsMethods
         {
             options.SwaggerDoc("v1", new OpenApiInfo
             {
-                Title = "eShopOnContainers - Ordering HTTP API",
+                Title = "eCommerceOnContainers - Ordering HTTP API",
                 Version = "v1",
                 Description = "The Ordering Service HTTP API"
             });

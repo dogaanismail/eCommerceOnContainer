@@ -1,4 +1,4 @@
-﻿namespace Microsoft.eShopOnContainers.Services.Ordering.API.Application.Commands;
+﻿namespace Microsoft.eCommerceOnContainers.Services.Ordering.API.Application.Commands;
 
 // Regular CommandHandler
 public class ShipOrderCommandHandler : IRequestHandler<ShipOrderCommand, bool>

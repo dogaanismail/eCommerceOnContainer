@@ -2,7 +2,21 @@
 
 public class OrderRepository : IOrderRepository
 {
+    #region Fields
     private readonly OrderingContext _context;
+
+    #endregion
+
+    #region Ctor
+
+    public OrderRepository(OrderingContext context)
+    {
+        _context = context ?? throw new ArgumentNullException(nameof(context));
+    }
+
+    #endregion
+
+    #region Methods
 
     public IUnitOfWork UnitOfWork
     {
@@ -10,11 +24,6 @@ public class OrderRepository : IOrderRepository
         {
             return _context;
         }
-    }
-
-    public OrderRepository(OrderingContext context)
-    {
-        _context = context ?? throw new ArgumentNullException(nameof(context));
     }
 
     public Order Add(Order order)
@@ -43,4 +52,6 @@ public class OrderRepository : IOrderRepository
     {
         _context.Entry(order).State = EntityState.Modified;
     }
+
+    #endregion
 }

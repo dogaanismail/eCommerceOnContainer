@@ -13,13 +13,17 @@ public class OrderingContext : DbContext, IUnitOfWork
     private readonly IMediator _mediator;
     private IDbContextTransaction _currentTransaction;
 
+#pragma warning disable CS8618 // Non-nullable field must contain a non-null value when exiting constructor. Consider declaring as nullable.
     public OrderingContext(DbContextOptions<OrderingContext> options) : base(options) { }
+#pragma warning restore CS8618 // Non-nullable field must contain a non-null value when exiting constructor. Consider declaring as nullable.
 
     public IDbContextTransaction GetCurrentTransaction() => _currentTransaction;
 
     public bool HasActiveTransaction => _currentTransaction != null;
 
+#pragma warning disable CS8618 // Non-nullable field must contain a non-null value when exiting constructor. Consider declaring as nullable.
     public OrderingContext(DbContextOptions<OrderingContext> options, IMediator mediator) : base(options)
+#pragma warning restore CS8618 // Non-nullable field must contain a non-null value when exiting constructor. Consider declaring as nullable.
     {
         _mediator = mediator ?? throw new ArgumentNullException(nameof(mediator));
 

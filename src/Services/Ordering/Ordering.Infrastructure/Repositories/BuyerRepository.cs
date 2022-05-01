@@ -2,18 +2,29 @@
 
 public class BuyerRepository : IBuyerRepository
 {
+    #region Fields
+
     private readonly OrderingContext _context;
+
+    #endregion
+
+    #region Ctor
+
+    public BuyerRepository(OrderingContext context)
+    {
+        _context = context ?? throw new ArgumentNullException(nameof(context));
+    }
+
+    #endregion
+
+    #region Methods
+
     public IUnitOfWork UnitOfWork
     {
         get
         {
             return _context;
         }
-    }
-
-    public BuyerRepository(OrderingContext context)
-    {
-        _context = context ?? throw new ArgumentNullException(nameof(context));
     }
 
     public Buyer Add(Buyer buyer)
@@ -47,4 +58,6 @@ public class BuyerRepository : IBuyerRepository
 
         return buyer;
     }
+
+    #endregion
 }
