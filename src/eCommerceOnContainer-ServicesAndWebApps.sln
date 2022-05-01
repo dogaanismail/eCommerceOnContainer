@@ -43,6 +43,8 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "WebHost", "WebHost", "{18AD
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WebHost.Customization", "BuildingBlocks\WebHostCustomization\WebHost.Customization\WebHost.Customization.csproj", "{6C7C714C-20BC-468E-AF4C-57686BA14923}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Ordering.Infrastructure", "Services\Ordering\Ordering.Infrastructure\Ordering.Infrastructure.csproj", "{8A23DDE9-1B47-4ADD-BCF7-1C39F6E4DE90}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -81,6 +83,10 @@ Global
 		{6C7C714C-20BC-468E-AF4C-57686BA14923}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{6C7C714C-20BC-468E-AF4C-57686BA14923}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{6C7C714C-20BC-468E-AF4C-57686BA14923}.Release|Any CPU.Build.0 = Release|Any CPU
+		{8A23DDE9-1B47-4ADD-BCF7-1C39F6E4DE90}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{8A23DDE9-1B47-4ADD-BCF7-1C39F6E4DE90}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{8A23DDE9-1B47-4ADD-BCF7-1C39F6E4DE90}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{8A23DDE9-1B47-4ADD-BCF7-1C39F6E4DE90}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -104,6 +110,7 @@ Global
 		{1C60E11B-ED72-4B02-BF5F-4F92C9599365} = {D73735F5-D7E4-4CBB-A139-35C7DFAE2EFF}
 		{18AD840D-113D-4851-A9FF-94CA51365C92} = {50FE2C66-54C1-4CA7-9198-5CDAEF544E9A}
 		{6C7C714C-20BC-468E-AF4C-57686BA14923} = {18AD840D-113D-4851-A9FF-94CA51365C92}
+		{8A23DDE9-1B47-4ADD-BCF7-1C39F6E4DE90} = {DB0D7A3D-C251-463F-A334-E56BF7FDE815}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {F60F1DAF-C283-44EA-A3FB-29B705ECAEBA}
