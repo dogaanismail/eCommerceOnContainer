@@ -45,6 +45,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WebHost.Customization", "Bu
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Ordering.Infrastructure", "Services\Ordering\Ordering.Infrastructure\Ordering.Infrastructure.csproj", "{8A23DDE9-1B47-4ADD-BCF7-1C39F6E4DE90}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Ordering.BackgroundTasks", "Services\Ordering\Ordering.BackgroundTasks\Ordering.BackgroundTasks.csproj", "{371E809A-C578-440A-A7E2-62966DCA6F54}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -87,6 +89,10 @@ Global
 		{8A23DDE9-1B47-4ADD-BCF7-1C39F6E4DE90}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{8A23DDE9-1B47-4ADD-BCF7-1C39F6E4DE90}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{8A23DDE9-1B47-4ADD-BCF7-1C39F6E4DE90}.Release|Any CPU.Build.0 = Release|Any CPU
+		{371E809A-C578-440A-A7E2-62966DCA6F54}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{371E809A-C578-440A-A7E2-62966DCA6F54}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{371E809A-C578-440A-A7E2-62966DCA6F54}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{371E809A-C578-440A-A7E2-62966DCA6F54}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -111,6 +117,7 @@ Global
 		{18AD840D-113D-4851-A9FF-94CA51365C92} = {50FE2C66-54C1-4CA7-9198-5CDAEF544E9A}
 		{6C7C714C-20BC-468E-AF4C-57686BA14923} = {18AD840D-113D-4851-A9FF-94CA51365C92}
 		{8A23DDE9-1B47-4ADD-BCF7-1C39F6E4DE90} = {DB0D7A3D-C251-463F-A334-E56BF7FDE815}
+		{371E809A-C578-440A-A7E2-62966DCA6F54} = {DB0D7A3D-C251-463F-A334-E56BF7FDE815}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {F60F1DAF-C283-44EA-A3FB-29B705ECAEBA}
