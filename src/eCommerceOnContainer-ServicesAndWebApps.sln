@@ -86,6 +86,10 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Catalog.UnitTests", "Servic
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Catalog.FunctionalTests", "Services\Catalog\Catalog.FunctionalTests\Catalog.FunctionalTests.csproj", "{04A2215F-625D-43F1-9475-1E1FA5577739}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Webhooks", "Webhooks", "{6EB4AD22-AF0F-4B4A-88F2-BD2CABD189FC}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Webhooks.API", "Services\Webhooks\Webhooks.API\Webhooks.API.csproj", "{C54B9C99-8D99-4EFE-B44F-38F3E7D62E59}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -176,6 +180,10 @@ Global
 		{04A2215F-625D-43F1-9475-1E1FA5577739}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{04A2215F-625D-43F1-9475-1E1FA5577739}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{04A2215F-625D-43F1-9475-1E1FA5577739}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C54B9C99-8D99-4EFE-B44F-38F3E7D62E59}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C54B9C99-8D99-4EFE-B44F-38F3E7D62E59}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C54B9C99-8D99-4EFE-B44F-38F3E7D62E59}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C54B9C99-8D99-4EFE-B44F-38F3E7D62E59}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -218,6 +226,8 @@ Global
 		{B0EC9681-4E86-4C12-99BE-B7449A1BD6A1} = {A2785A8A-F4A2-410E-BA02-A1B3E8797D64}
 		{DCCE100A-32C3-4A2E-B6AC-D3BFDF08160D} = {B0EC9681-4E86-4C12-99BE-B7449A1BD6A1}
 		{04A2215F-625D-43F1-9475-1E1FA5577739} = {B0EC9681-4E86-4C12-99BE-B7449A1BD6A1}
+		{6EB4AD22-AF0F-4B4A-88F2-BD2CABD189FC} = {036178E2-27E4-4D0B-B034-02745F8190BB}
+		{C54B9C99-8D99-4EFE-B44F-38F3E7D62E59} = {6EB4AD22-AF0F-4B4A-88F2-BD2CABD189FC}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {F60F1DAF-C283-44EA-A3FB-29B705ECAEBA}
