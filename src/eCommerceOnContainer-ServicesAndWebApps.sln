@@ -3,6 +3,8 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.0.31919.166
 MinimumVisualStudioVersion = 10.0.40219.1
+Project("{E53339B2-1760-4266-BCC7-CA923CBCF16C}") = "docker-compose", "docker-compose.dcproj", "{FEA0C318-FFED-4D39-8781-265718CA43DD}"
+EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "src", "src", "{932D8224-11F6-4D07-B109-DA28AD288A63}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Services", "Services", "{036178E2-27E4-4D0B-B034-02745F8190BB}"
@@ -29,66 +31,66 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "EventBus", "EventBus", "{F3
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "EventBus", "BuildingBlocks\EventBus\EventBus\EventBus.csproj", "{7C721B02-7C01-4F35-9AAB-7A700E3C8293}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EventBusRabbitMQ", "BuildingBlocks\EventBus\EventBusRabbitMQ\EventBusRabbitMQ.csproj", "{93AC63AB-DCAB-4DFE-80ED-5949C3FA36E8}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "EventBusRabbitMQ", "BuildingBlocks\EventBus\EventBusRabbitMQ\EventBusRabbitMQ.csproj", "{93AC63AB-DCAB-4DFE-80ED-5949C3FA36E8}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EventBusServiceBus", "BuildingBlocks\EventBus\EventBusServiceBus\EventBusServiceBus.csproj", "{B04A50A9-EA4E-4C11-9DCA-9E64049CB20F}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "EventBusServiceBus", "BuildingBlocks\EventBus\EventBusServiceBus\EventBusServiceBus.csproj", "{B04A50A9-EA4E-4C11-9DCA-9E64049CB20F}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "IntegrationEventLogEF", "BuildingBlocks\EventBus\IntegrationEventLogEF\IntegrationEventLogEF.csproj", "{5B37B5FF-531C-4541-9386-20B9A24E2CE2}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "IntegrationEventLogEF", "BuildingBlocks\EventBus\IntegrationEventLogEF\IntegrationEventLogEF.csproj", "{5B37B5FF-531C-4541-9386-20B9A24E2CE2}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Devspaces.Support", "Devspaces.Support", "{D73735F5-D7E4-4CBB-A139-35C7DFAE2EFF}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Devspaces.Support", "BuildingBlocks\Devspaces.Support\Devspaces.Support\Devspaces.Support.csproj", "{1C60E11B-ED72-4B02-BF5F-4F92C9599365}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Devspaces.Support", "BuildingBlocks\Devspaces.Support\Devspaces.Support\Devspaces.Support.csproj", "{1C60E11B-ED72-4B02-BF5F-4F92C9599365}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "WebHost", "WebHost", "{18AD840D-113D-4851-A9FF-94CA51365C92}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WebHost.Customization", "BuildingBlocks\WebHostCustomization\WebHost.Customization\WebHost.Customization.csproj", "{6C7C714C-20BC-468E-AF4C-57686BA14923}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "WebHost.Customization", "BuildingBlocks\WebHostCustomization\WebHost.Customization\WebHost.Customization.csproj", "{6C7C714C-20BC-468E-AF4C-57686BA14923}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Ordering.Infrastructure", "Services\Ordering\Ordering.Infrastructure\Ordering.Infrastructure.csproj", "{8A23DDE9-1B47-4ADD-BCF7-1C39F6E4DE90}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Ordering.Infrastructure", "Services\Ordering\Ordering.Infrastructure\Ordering.Infrastructure.csproj", "{8A23DDE9-1B47-4ADD-BCF7-1C39F6E4DE90}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Ordering.BackgroundTasks", "Services\Ordering\Ordering.BackgroundTasks\Ordering.BackgroundTasks.csproj", "{371E809A-C578-440A-A7E2-62966DCA6F54}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Ordering.BackgroundTasks", "Services\Ordering\Ordering.BackgroundTasks\Ordering.BackgroundTasks.csproj", "{371E809A-C578-440A-A7E2-62966DCA6F54}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Ordering.API", "Services\Ordering\Ordering.API\Ordering.API.csproj", "{EBECF966-76A9-4182-9D4A-E0A14EEF6CF2}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Ordering.API", "Services\Ordering\Ordering.API\Ordering.API.csproj", "{EBECF966-76A9-4182-9D4A-E0A14EEF6CF2}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{73AA9E8D-6D6E-49AC-9B04-19C7923CB176}"
 	ProjectSection(SolutionItems) = preProject
 		.editorconfig = .editorconfig
 	EndProjectSection
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Ordering.SignalrHub", "Services\Ordering\Ordering.SignalrHub\Ordering.SignalrHub.csproj", "{82C1BD3A-32E5-4DFE-A0DD-C44911FD4015}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Ordering.SignalrHub", "Services\Ordering\Ordering.SignalrHub\Ordering.SignalrHub.csproj", "{82C1BD3A-32E5-4DFE-A0DD-C44911FD4015}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "tests", "tests", "{289AA10F-7CAA-4004-8F05-EF61DBB78CB0}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Ordering.UnitTests", "Services\Ordering\tests\Ordering.UnitTests\Ordering.UnitTests.csproj", "{6DE2BE02-C2A3-4CC8-A092-5B9A3CAB1163}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Ordering.UnitTests", "Services\Ordering\tests\Ordering.UnitTests\Ordering.UnitTests.csproj", "{6DE2BE02-C2A3-4CC8-A092-5B9A3CAB1163}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Ordering.FunctionalTests", "Services\Ordering\tests\Ordering.FunctionalTests\Ordering.FunctionalTests.csproj", "{35B3BCCC-24A2-4069-A88E-B2ED620B447E}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Ordering.FunctionalTests", "Services\Ordering\tests\Ordering.FunctionalTests\Ordering.FunctionalTests.csproj", "{35B3BCCC-24A2-4069-A88E-B2ED620B447E}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Basket", "Basket", "{537F51B3-5E52-491A-A466-1B4262AEA2C6}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Basket.API", "Services\Basket\Basket.API\Basket.API.csproj", "{97E876D1-AC4F-4EFE-B1B2-977D42C89CDD}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Basket.API", "Services\Basket\Basket.API\Basket.API.csproj", "{97E876D1-AC4F-4EFE-B1B2-977D42C89CDD}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "tests", "tests", "{8DCB7BB2-CEEE-40EE-B841-665AEB80F268}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Basket.UnitTests", "Services\Basket\Basket.UnitTests\Basket.UnitTests.csproj", "{EB5E91E6-BEFC-43CE-9F9C-1A79DCBCFBEF}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Basket.UnitTests", "Services\Basket\Basket.UnitTests\Basket.UnitTests.csproj", "{EB5E91E6-BEFC-43CE-9F9C-1A79DCBCFBEF}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Basket.FunctionalTests", "Services\Basket\Basket.FunctionalTests\Basket.FunctionalTests.csproj", "{74959FA1-C75D-4CCD-BA0D-DA12A53946A1}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Basket.FunctionalTests", "Services\Basket\Basket.FunctionalTests\Basket.FunctionalTests.csproj", "{74959FA1-C75D-4CCD-BA0D-DA12A53946A1}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Payment", "Payment", "{9948DAA5-11D5-4EF6-AF2D-A38E139A3A6F}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Payment.API", "Services\Payment\Payment.API\Payment.API.csproj", "{58948991-16C1-487A-8BFE-9F78E529D718}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Payment.API", "Services\Payment\Payment.API\Payment.API.csproj", "{58948991-16C1-487A-8BFE-9F78E529D718}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Catalog", "Catalog", "{A2785A8A-F4A2-410E-BA02-A1B3E8797D64}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Catalog.API", "Services\Catalog\Catalog.API\Catalog.API.csproj", "{8C13DAB5-2D08-467D-89BA-ED2495F117E5}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Catalog.API", "Services\Catalog\Catalog.API\Catalog.API.csproj", "{8C13DAB5-2D08-467D-89BA-ED2495F117E5}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "tests", "tests", "{B0EC9681-4E86-4C12-99BE-B7449A1BD6A1}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Catalog.UnitTests", "Services\Catalog\Catalog.UnitTests\Catalog.UnitTests.csproj", "{DCCE100A-32C3-4A2E-B6AC-D3BFDF08160D}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Catalog.UnitTests", "Services\Catalog\Catalog.UnitTests\Catalog.UnitTests.csproj", "{DCCE100A-32C3-4A2E-B6AC-D3BFDF08160D}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Catalog.FunctionalTests", "Services\Catalog\Catalog.FunctionalTests\Catalog.FunctionalTests.csproj", "{04A2215F-625D-43F1-9475-1E1FA5577739}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Catalog.FunctionalTests", "Services\Catalog\Catalog.FunctionalTests\Catalog.FunctionalTests.csproj", "{04A2215F-625D-43F1-9475-1E1FA5577739}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Webhooks", "Webhooks", "{6EB4AD22-AF0F-4B4A-88F2-BD2CABD189FC}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Webhooks.API", "Services\Webhooks\Webhooks.API\Webhooks.API.csproj", "{C54B9C99-8D99-4EFE-B44F-38F3E7D62E59}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Webhooks.API", "Services\Webhooks\Webhooks.API\Webhooks.API.csproj", "{C54B9C99-8D99-4EFE-B44F-38F3E7D62E59}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -96,6 +98,10 @@ Global
 		Release|Any CPU = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{FEA0C318-FFED-4D39-8781-265718CA43DD}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{FEA0C318-FFED-4D39-8781-265718CA43DD}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{FEA0C318-FFED-4D39-8781-265718CA43DD}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{FEA0C318-FFED-4D39-8781-265718CA43DD}.Release|Any CPU.Build.0 = Release|Any CPU
 		{AD938DB0-252B-4CF1-84F7-4358C7DF3452}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{AD938DB0-252B-4CF1-84F7-4358C7DF3452}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{AD938DB0-252B-4CF1-84F7-4358C7DF3452}.Release|Any CPU.ActiveCfg = Release|Any CPU
