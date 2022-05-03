@@ -9,7 +9,11 @@
 	<ItemGroup>
 		<Protobuf Include="Proto\ordering.proto" GrpcServices="Server" Generator="MSBuild:Compile" />
 		<Content Include="Proto\ordering.proto" />
+		<Content Include="Setup\CardTypes.csv" />
+		<Content Include="Setup\OrderStatus.csv" />
 		<None Remove="@(Protobuf)" />
+		<None Remove="Setup\CardTypes.csv" />
+		<None Remove="Setup\OrderStatus.csv" />
 	</ItemGroup>
 
 	<ItemGroup>
@@ -36,6 +40,10 @@
 		<PackageReference Include="Microsoft.AspNetCore.Authentication.JwtBearer" Version="6.0.4" />
 		<PackageReference Include="Microsoft.AspNetCore.Diagnostics.HealthChecks" Version="2.2.0" />
 		<PackageReference Include="Microsoft.AspNetCore.HealthChecks" Version="1.0.0" />
+		<PackageReference Include="Microsoft.EntityFrameworkCore.Design" Version="6.0.4">
+		  <PrivateAssets>all</PrivateAssets>
+		  <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+		</PackageReference>
 		<PackageReference Include="Microsoft.Extensions.Logging.AzureAppServices" Version="6.0.4" />
 		<PackageReference Include="Polly" Version="7.2.3" />
 		<PackageReference Include="Serilog.AspNetCore" Version="5.0.0" />

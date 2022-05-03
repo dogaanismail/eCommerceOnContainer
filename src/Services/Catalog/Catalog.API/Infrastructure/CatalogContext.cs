@@ -24,7 +24,7 @@ public class CatalogContextDesignFactory : IDesignTimeDbContextFactory<CatalogCo
     public CatalogContext CreateDbContext(string[] args)
     {
         var optionsBuilder = new DbContextOptionsBuilder<CatalogContext>()
-            .UseSqlServer("Server=.;Initial Catalog=Microsoft.eShopOnContainers.Services.CatalogDb;Integrated Security=true");
+            .UseSqlServer("Server=.;Initial Catalog=Microsoft.eCommerceOnContainers.Services.CatalogDb;Integrated Security=true");
 
         return new CatalogContext(optionsBuilder.Options);
     }
