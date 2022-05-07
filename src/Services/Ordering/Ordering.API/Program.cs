@@ -34,20 +34,24 @@ finally
 }
 
 IWebHost BuildWebHost(IConfiguration configuration, string[] args) =>
-    WebHost.CreateDefaultBuilder(args).CaptureStartupErrors(false).ConfigureKestrel(options =>
-        {
-            var ports = GetDefinedPorts(configuration);
-            options.Listen(IPAddress.Any, ports.httpPort, listenOptions =>
-            {
-                listenOptions.Protocols = HttpProtocols.Http1AndHttp2;
-            });
+    WebHost.CreateDefaultBuilder(args).CaptureStartupErrors(false)
 
-            options.Listen(IPAddress.Any, ports.grpcPort, listenOptions =>
-            {
-                listenOptions.Protocols = HttpProtocols.Http2;
-            });
+    //TODO: using of grpc implementions must be investigated!
 
-        })
+    //.ConfigureKestrel(options =>
+    //    {
+    //        var ports = GetDefinedPorts(configuration);
+    //        options.Listen(IPAddress.Any, ports.httpPort, listenOptions =>
+    //        {
+    //            listenOptions.Protocols = HttpProtocols.Http1AndHttp2;
+    //        });
+
+    //        options.Listen(IPAddress.Any, ports.grpcPort, listenOptions =>
+    //        {
+    //            listenOptions.Protocols = HttpProtocols.Http2;
+    //        });
+
+    //    })
         .ConfigureAppConfiguration(x => x.AddConfiguration(configuration))
         .UseStartup<Startup>()
         .UseContentRoot(Directory.GetCurrentDirectory())

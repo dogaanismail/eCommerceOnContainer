@@ -2,14 +2,20 @@
 public class IntegrationEventLogContext : DbContext
 {
     public IntegrationEventLogContext(DbContextOptions<IntegrationEventLogContext> options) : base(options)
-    {
+    {     
     }
 
     public DbSet<IntegrationEventLogEntry> IntegrationEventLogs { get; set; }
 
     protected override void OnModelCreating(ModelBuilder builder)
     {
+        
         builder.Entity<IntegrationEventLogEntry>(ConfigureIntegrationEventLogEntry);
+    }
+
+    protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
+    {
+        base.OnConfiguring(optionsBuilder);
     }
 
     void ConfigureIntegrationEventLogEntry(EntityTypeBuilder<IntegrationEventLogEntry> builder)
