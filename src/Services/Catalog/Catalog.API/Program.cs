@@ -37,19 +37,24 @@ IWebHost CreateHostBuilder(IConfiguration configuration, string[] args) =>
   WebHost.CreateDefaultBuilder(args)
       .ConfigureAppConfiguration(x => x.AddConfiguration(configuration))
       .CaptureStartupErrors(false)
-      .ConfigureKestrel(options =>
-      {
-          var ports = GetDefinedPorts(configuration);
-          options.Listen(IPAddress.Any, ports.httpPort, listenOptions =>
-          {
-              listenOptions.Protocols = HttpProtocols.Http1AndHttp2;
-          });
-          options.Listen(IPAddress.Any, ports.grpcPort, listenOptions =>
-          {
-              listenOptions.Protocols = HttpProtocols.Http2;
-          });
 
-      })
+      //TODO: using of grpc implementions must be investigated!
+
+      //.ConfigureKestrel(options =>
+      //{
+      //    var ports = GetDefinedPorts(configuration);
+      //    options.Listen(IPAddress.Any, ports.httpPort, listenOptions =>
+      //    {
+      //        listenOptions.Protocols = HttpProtocols.Http1AndHttp2;
+      //    });
+      //    options.Listen(IPAddress.Any, ports.grpcPort, listenOptions =>
+      //    {
+      //        listenOptions.Protocols = HttpProtocols.Http2;
+      //    });
+
+      //})
+
+
       .UseStartup<Startup>()
       .UseContentRoot(Directory.GetCurrentDirectory())
       .UseWebRoot("Pics")
