@@ -83,7 +83,7 @@ public class Startup
             endpoints.MapHealthChecks("/hc", new HealthCheckOptions()
             {
                 Predicate = _ => true,
-                ResponseWriter = UIResponseWriter.WriteHealthCheckUIResponse
+                ResponseWriter = UIResponseWriter.WriteHealthCheckUIResponse,
             });
             endpoints.MapHealthChecks("/liveness", new HealthCheckOptions
             {
