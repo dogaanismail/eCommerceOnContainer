@@ -219,8 +219,7 @@ static class CustomExtensionMethods
 
         var hcBuilder = services.AddHealthChecks();
 
-        hcBuilder
-            .AddCheck("self", () => HealthCheckResult.Healthy())
+        hcBuilder.AddCheck("self", () => HealthCheckResult.Healthy())
             .AddSqlServer(
                 configuration["ConnectionString"],
                 name: "WebhooksApiDb-check",

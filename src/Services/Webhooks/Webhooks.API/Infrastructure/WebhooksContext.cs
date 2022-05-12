@@ -14,7 +14,7 @@ public class WebhooksContextDesignFactory : IDesignTimeDbContextFactory<Webhooks
     public WebhooksContext CreateDbContext(string[] args)
     {
         var optionsBuilder = new DbContextOptionsBuilder<WebhooksContext>()
-            .UseSqlServer("Server=.;Initial Catalog=Microsoft.eCommerceOnContainers.Services.CatalogDb;Integrated Security=true");
+            .UseSqlServer("Server=.;Initial Catalog=Microsoft.eCommerceOnContainers.Services.WebhooksDb;Integrated Security=true");
 
         return new WebhooksContext(optionsBuilder.Options);
     }

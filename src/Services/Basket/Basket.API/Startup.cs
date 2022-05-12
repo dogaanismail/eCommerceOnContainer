@@ -286,16 +286,14 @@ public static class CustomExtensionMethods
 
         hcBuilder.AddCheck("self", () => HealthCheckResult.Healthy());
 
-        hcBuilder
-            .AddRedis(
+        hcBuilder.AddRedis(
                 configuration["ConnectionString"],
                 name: "redis-check",
                 tags: new string[] { "redis" });
 
         if (configuration.GetValue<bool>("AzureServiceBusEnabled"))
         {
-            hcBuilder
-                .AddAzureServiceBusTopic(
+            hcBuilder.AddAzureServiceBusTopic(
                     configuration["EventBusConnection"],
                     topicName: "eshop_event_bus",
                     name: "basket-servicebus-check",
@@ -303,8 +301,7 @@ public static class CustomExtensionMethods
         }
         else
         {
-            hcBuilder
-                .AddRabbitMQ(
+            hcBuilder.AddRabbitMQ(
                     $"amqp://{configuration["EventBusConnection"]}",
                     name: "basket-rabbitmqbus-check",
                     tags: new string[] { "rabbitmqbus" });

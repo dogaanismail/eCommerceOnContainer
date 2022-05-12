@@ -156,16 +156,14 @@ static class CustomExtensionsMethods
 
         hcBuilder.AddCheck("self", () => HealthCheckResult.Healthy());
 
-        hcBuilder
-            .AddSqlServer(
+        hcBuilder.AddSqlServer(
                 configuration["ConnectionString"],
                 name: "OrderingDB-check",
                 tags: new string[] { "orderingdb" });
 
         if (configuration.GetValue<bool>("AzureServiceBusEnabled"))
         {
-            hcBuilder
-                .AddAzureServiceBusTopic(
+            hcBuilder.AddAzureServiceBusTopic(
                     configuration["EventBusConnection"],
                     topicName: "eshop_event_bus",
                     name: "ordering-servicebus-check",
@@ -173,8 +171,7 @@ static class CustomExtensionsMethods
         }
         else
         {
-            hcBuilder
-                .AddRabbitMQ(
+            hcBuilder.AddRabbitMQ(
                     $"amqp://{configuration["EventBusConnection"]}",
                     name: "ordering-rabbitmqbus-check",
                     tags: new string[] { "rabbitmqbus" });
@@ -346,10 +343,10 @@ static class CustomExtensionsMethods
                 var eventBusSubcriptionsManager = sp.GetRequiredService<IEventBusSubscriptionsManager>();
 
                 var retryCount = 5;
+
                 if (!string.IsNullOrEmpty(configuration["EventBusRetryCount"]))
-                {
                     retryCount = int.Parse(configuration["EventBusRetryCount"]);
-                }
+                
 
                 return new EventBusRabbitMQ(rabbitMQPersistentConnection, logger, iLifetimeScope, eventBusSubcriptionsManager, subscriptionClientName, retryCount);
             });

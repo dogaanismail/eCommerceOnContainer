@@ -127,11 +127,10 @@ public class Startup
                 var eventBusSubcriptionsManager = sp.GetRequiredService<IEventBusSubscriptionsManager>();
 
                 var retryCount = 5;
-                if (!string.IsNullOrEmpty(Configuration["EventBusRetryCount"]))
-                {
-                    retryCount = int.Parse(Configuration["EventBusRetryCount"]);
-                }
 
+                if (!string.IsNullOrEmpty(Configuration["EventBusRetryCount"]))
+                    retryCount = int.Parse(Configuration["EventBusRetryCount"]);
+                
                 return new EventBusRabbitMQ(rabbitMQPersistentConnection, logger, iLifetimeScope, eventBusSubcriptionsManager, subscriptionClientName, retryCount);
             });
         }
@@ -157,8 +156,7 @@ public static class CustomExtensionMethods
 
         if (configuration.GetValue<bool>("AzureServiceBusEnabled"))
         {
-            hcBuilder
-                .AddAzureServiceBusTopic(
+            hcBuilder.AddAzureServiceBusTopic(
                     configuration["EventBusConnection"],
                     topicName: "eshop_event_bus",
                     name: "payment-servicebus-check",
@@ -166,8 +164,7 @@ public static class CustomExtensionMethods
         }
         else
         {
-            hcBuilder
-                .AddRabbitMQ(
+            hcBuilder.AddRabbitMQ(
                     $"amqp://{configuration["EventBusConnection"]}",
                     name: "payment-rabbitmqbus-check",
                     tags: new string[] { "rabbitmqbus" });

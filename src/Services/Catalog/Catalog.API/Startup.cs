@@ -147,8 +147,7 @@ public static class CustomExtensionMethods
 
         if (configuration.GetValue<bool>("AzureServiceBusEnabled"))
         {
-            hcBuilder
-                .AddAzureServiceBusTopic(
+            hcBuilder.AddAzureServiceBusTopic(
                     configuration["EventBusConnection"],
                     topicName: "eshop_event_bus",
                     name: "catalog-servicebus-check",
@@ -156,8 +155,7 @@ public static class CustomExtensionMethods
         }
         else
         {
-            hcBuilder
-                .AddRabbitMQ(
+            hcBuilder.AddRabbitMQ(
                     $"amqp://{configuration["EventBusConnection"]}",
                     name: "catalog-rabbitmqbus-check",
                     tags: new string[] { "rabbitmqbus" });
