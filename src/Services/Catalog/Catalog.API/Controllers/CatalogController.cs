@@ -34,7 +34,7 @@ public class CatalogController : ControllerBase
     [ProducesResponseType(typeof(PaginatedItemsViewModel<CatalogItem>), (int)HttpStatusCode.OK)]
     [ProducesResponseType(typeof(IEnumerable<CatalogItem>), (int)HttpStatusCode.OK)]
     [ProducesResponseType((int)HttpStatusCode.BadRequest)]
-    public async Task<IActionResult> ItemsAsync([FromQuery] int pageSize = 10, [FromQuery] int pageIndex = 0, string ids = null)
+    public async Task<IActionResult> ItemsAsync([FromQuery] int pageSize = 10, [FromQuery] int pageIndex = 0, string? ids = null)
     {
         if (!string.IsNullOrEmpty(ids))
         {
@@ -55,15 +55,6 @@ public class CatalogController : ControllerBase
             .Skip(pageSize * pageIndex)
             .Take(pageSize)
             .ToListAsync();
-
-        /* The "awesome" fix for testing Devspaces */
-
-        /*
-        foreach (var pr in itemsOnPage) {
-            pr.Name = "Awesome " + pr.Name;
-        }
-
-        */
 
         itemsOnPage = ChangeUriPlaceholder(itemsOnPage);
 
@@ -302,8 +293,7 @@ public class CatalogController : ControllerBase
             return new List<CatalogItem>();
         }
 
-        var idsToSelect = numIds
-            .Select(id => id.Value);
+        var idsToSelect = numIds.Select(id => id.Value);
 
         var items = await _catalogContext.CatalogItems.Where(ci => idsToSelect.Contains(ci.Id)).ToListAsync();
 
