@@ -1,8 +1,8 @@
 ﻿namespace Microsoft.eCommerceOnContainers.BuildingBlocks.EventBusRabbitMQ;
 
-public class DefaultRabbitMQPersistentConnection
-    : IRabbitMQPersistentConnection
+public class DefaultRabbitMQPersistentConnection : IRabbitMQPersistentConnection
 {
+    #region Fields
     private readonly IConnectionFactory _connectionFactory;
     private readonly ILogger<DefaultRabbitMQPersistentConnection> _logger;
     private readonly int _retryCount;
@@ -10,6 +10,10 @@ public class DefaultRabbitMQPersistentConnection
     bool _disposed;
 
     object sync_root = new object();
+
+    #endregion
+
+    #region Ctor
 
     public DefaultRabbitMQPersistentConnection(IConnectionFactory connectionFactory,
         ILogger<DefaultRabbitMQPersistentConnection> logger,
@@ -19,6 +23,10 @@ public class DefaultRabbitMQPersistentConnection
         _logger = logger ?? throw new ArgumentNullException(nameof(logger));
         _retryCount = retryCount;
     }
+
+    #endregion
+
+    #region Methods
 
     public bool IsConnected
     {
@@ -93,6 +101,10 @@ public class DefaultRabbitMQPersistentConnection
         }
     }
 
+    #endregion
+
+    #region Private Methods
+
     private void OnConnectionBlocked(object sender, ConnectionBlockedEventArgs e)
     {
         if (_disposed) return;
@@ -102,7 +114,7 @@ public class DefaultRabbitMQPersistentConnection
         TryConnect();
     }
 
-    void OnCallbackException(object sender, CallbackExceptionEventArgs e)
+    private void OnCallbackException(object sender, CallbackExceptionEventArgs e)
     {
         if (_disposed) return;
 
@@ -111,7 +123,7 @@ public class DefaultRabbitMQPersistentConnection
         TryConnect();
     }
 
-    void OnConnectionShutdown(object sender, ShutdownEventArgs reason)
+    private void OnConnectionShutdown(object sender, ShutdownEventArgs reason)
     {
         if (_disposed) return;
 
@@ -119,4 +131,6 @@ public class DefaultRabbitMQPersistentConnection
 
         TryConnect();
     }
+
+    #endregion
 }

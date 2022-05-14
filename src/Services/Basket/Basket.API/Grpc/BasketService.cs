@@ -2,14 +2,23 @@
 
 public class BasketService : Basket.BasketBase
 {
+    #region Fields
     private readonly IBasketRepository _repository;
     private readonly ILogger<BasketService> _logger;
 
-    public BasketService(IBasketRepository repository, ILogger<BasketService> logger)
+    #endregion
+
+    #region Ctor
+    public BasketService(IBasketRepository repository, 
+        ILogger<BasketService> logger)
     {
         _repository = repository;
         _logger = logger;
     }
+
+    #endregion
+
+    #region Methods
 
     [AllowAnonymous]
     public override async Task<CustomerBasketResponse> GetBasketById(BasketRequest request, ServerCallContext context)
@@ -49,6 +58,10 @@ public class BasketService : Basket.BasketBase
 
         return null;
     }
+
+    #endregion
+
+    #region Private Methods
 
     private CustomerBasketResponse MapToCustomerBasketResponse(CustomerBasket customerBasket)
     {
@@ -91,4 +104,6 @@ public class BasketService : Basket.BasketBase
 
         return response;
     }
+
+    #endregion
 }

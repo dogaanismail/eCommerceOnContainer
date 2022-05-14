@@ -105,6 +105,8 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Web.Bff.Shopping", "Web.Bff
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Web.Shopping.HttpAggregator", "ApiGateways\Web.Bff.Shopping\Web.Shopping.HttpAggregator\Web.Shopping.HttpAggregator.csproj", "{D36DEF7A-0357-442A-8B58-625F73C61A10}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WebMVC", "Web\WebMVC\WebMVC.csproj", "{0BA52751-236C-42EF-8000-F53012F496D1}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -207,6 +209,10 @@ Global
 		{D36DEF7A-0357-442A-8B58-625F73C61A10}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{D36DEF7A-0357-442A-8B58-625F73C61A10}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{D36DEF7A-0357-442A-8B58-625F73C61A10}.Release|Any CPU.Build.0 = Release|Any CPU
+		{0BA52751-236C-42EF-8000-F53012F496D1}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{0BA52751-236C-42EF-8000-F53012F496D1}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{0BA52751-236C-42EF-8000-F53012F496D1}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{0BA52751-236C-42EF-8000-F53012F496D1}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -257,6 +263,7 @@ Global
 		{E26C7AB7-A7F0-4710-99FD-281BA151A064} = {DA08FC8B-C81B-43A3-AB92-DB57C0011108}
 		{A41F37B5-580C-4BF9-8880-B4E0BFFD8B10} = {1F695341-41B3-4490-9FEB-73342C76ADFF}
 		{D36DEF7A-0357-442A-8B58-625F73C61A10} = {A41F37B5-580C-4BF9-8880-B4E0BFFD8B10}
+		{0BA52751-236C-42EF-8000-F53012F496D1} = {3A7D54D5-1CA0-48DC-8C4A-33A0DE769E6F}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {F60F1DAF-C283-44EA-A3FB-29B705ECAEBA}

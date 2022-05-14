@@ -24,7 +24,7 @@
             {
                 new()
                 {
-                    [ oAuthScheme ] = new[] { "Microsoft.eShopOnContainers.Web.Shopping.HttpAggregator" }
+                    [ oAuthScheme ] = new[] { "Microsoft.eCommerceOnContainers.Web.Shopping.HttpAggregator" }
                 }
             };
             }

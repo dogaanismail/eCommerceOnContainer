@@ -2,14 +2,24 @@
 
 public partial class HttpGlobalExceptionFilter : IExceptionFilter
 {
+    #region Fields
     private readonly IWebHostEnvironment env;
     private readonly ILogger<HttpGlobalExceptionFilter> logger;
 
-    public HttpGlobalExceptionFilter(IWebHostEnvironment env, ILogger<HttpGlobalExceptionFilter> logger)
+    #endregion
+
+    #region Ctor
+
+    public HttpGlobalExceptionFilter(IWebHostEnvironment env, 
+        ILogger<HttpGlobalExceptionFilter> logger)
     {
         this.env = env;
         this.logger = logger;
     }
+
+    #endregion
+
+    #region Methods
 
     public void OnException(ExceptionContext context)
     {
@@ -44,4 +54,6 @@ public partial class HttpGlobalExceptionFilter : IExceptionFilter
         }
         context.ExceptionHandled = true;
     }
+
+    #endregion
 }
