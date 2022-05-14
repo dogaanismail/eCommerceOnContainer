@@ -95,19 +95,19 @@ services:
   #    - catalog-api
   #    - basket-api
 
-  #webshoppingagg:
-  #  image: ${REGISTRY:-eshop}/webshoppingagg:${PLATFORM:-linux}-${TAG:-latest}
-  #  build:
-  #    context: .
-  #    dockerfile: ApiGateways/Web.Bff.Shopping/aggregator/Dockerfile
-  #  depends_on:
-  #    - nosqldata
-  #    - sqldata
-  #    - identity-api
-  #    - rabbitmq
-  #    - ordering-api
-  #    - catalog-api
-  #    - basket-api
+  webshoppingagg:
+   image: ${REGISTRY:-eshop}/webshoppingagg:${PLATFORM:-linux}-${TAG:-latest}
+   build:
+     context: .
+     dockerfile: ApiGateways/Web.Bff.Shopping/Web.Shopping.HttpAggregator/Dockerfile
+   depends_on:
+     - nosqldata
+     - sqldata
+     - identity-api
+     - rabbitmq
+     - ordering-api
+     - catalog-api
+     - basket-api
 
   #ordering-signalrhub:
   #  image: ${REGISTRY:-eshop}/ordering.signalrhub:${PLATFORM:-linux}-${TAG:-latest}

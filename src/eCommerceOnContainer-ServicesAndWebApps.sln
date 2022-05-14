@@ -52,6 +52,8 @@ EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{73AA9E8D-6D6E-49AC-9B04-19C7923CB176}"
 	ProjectSection(SolutionItems) = preProject
 		.editorconfig = .editorconfig
+		.env = .env
+		NuGet.config = NuGet.config
 	EndProjectSection
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Ordering.SignalrHub", "Services\Ordering\Ordering.SignalrHub\Ordering.SignalrHub.csproj", "{82C1BD3A-32E5-4DFE-A0DD-C44911FD4015}"
@@ -98,7 +100,7 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "config", "config", "{DA08FC
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "webshopping", "webshopping", "{E26C7AB7-A7F0-4710-99FD-281BA151A064}"
 	ProjectSection(SolutionItems) = preProject
-		envoy.yaml = envoy.yaml
+		ApiGateways\Envoy\config\webshopping\envoy.yaml = ApiGateways\Envoy\config\webshopping\envoy.yaml
 	EndProjectSection
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Web.Bff.Shopping", "Web.Bff.Shopping", "{A41F37B5-580C-4BF9-8880-B4E0BFFD8B10}"

@@ -18,13 +18,11 @@
     },
     "Microsoft.eCommerceOnContainers.Services.Basket.API": {
       "commandName": "Project",
-      "dotnetRunMessages": true,
       "launchBrowser": true,
-      "launchUrl": "swagger",
+      "launchUrl": "http://localhost:55103/",
       "environmentVariables": {
         "ASPNETCORE_ENVIRONMENT": "Development"
-      },
-      "applicationUrl": "http://localhost:55103"
+      }
     }
   }
 }

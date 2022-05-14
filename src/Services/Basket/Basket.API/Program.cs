@@ -25,20 +25,20 @@ finally
 IWebHost BuildWebHost(IConfiguration configuration, string[] args) =>
     WebHost.CreateDefaultBuilder(args)
         .CaptureStartupErrors(false)
-        //.ConfigureKestrel(options =>
-        //{
-        //    var ports = GetDefinedPorts(configuration);
-        //    options.Listen(IPAddress.Any, ports.httpPort, listenOptions =>
-        //    {
-        //        listenOptions.Protocols = HttpProtocols.Http1AndHttp2;
-        //    });
+        .ConfigureKestrel(options =>
+        {
+            var ports = GetDefinedPorts(configuration);
+            options.Listen(IPAddress.Any, ports.httpPort, listenOptions =>
+            {
+                listenOptions.Protocols = HttpProtocols.Http1AndHttp2;
+            });
 
-        //    options.Listen(IPAddress.Any, ports.grpcPort, listenOptions =>
-        //    {
-        //        listenOptions.Protocols = HttpProtocols.Http2;
-        //    });
+            options.Listen(IPAddress.Any, ports.grpcPort, listenOptions =>
+            {
+                listenOptions.Protocols = HttpProtocols.Http2;
+            });
 
-        //})
+        })
         .ConfigureAppConfiguration(x => x.AddConfiguration(configuration))
         .UseFailing(options =>
         {

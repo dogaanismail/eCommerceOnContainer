@@ -16,7 +16,6 @@ namespace Microsoft.eCommerceOnContainers.Services.Identity.API
         {
             RegisterAppInsights(services);
 
-            // Add framework services.
             services.AddDbContext<ApplicationDbContext>(options =>
                     options.UseSqlServer(Configuration["ConnectionString"],
                     sqlServerOptionsAction: sqlOptions =>
