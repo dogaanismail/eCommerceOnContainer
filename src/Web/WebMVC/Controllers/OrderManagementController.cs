@@ -3,13 +3,23 @@
 [Authorize(AuthenticationSchemes = OpenIdConnectDefaults.AuthenticationScheme)]
 public class OrderManagementController : Controller
 {
+    #region Fields
     private IOrderingService _orderSvc;
     private readonly IIdentityParser<ApplicationUser> _appUserParser;
-    public OrderManagementController(IOrderingService orderSvc, IIdentityParser<ApplicationUser> appUserParser)
+
+    #endregion
+
+    #region Ctor
+    public OrderManagementController(IOrderingService orderSvc, 
+        IIdentityParser<ApplicationUser> appUserParser)
     {
         _appUserParser = appUserParser;
         _orderSvc = orderSvc;
     }
+
+    #endregion
+
+    #region Endpoints
 
     public async Task<IActionResult> Index()
     {
@@ -29,4 +39,6 @@ public class OrderManagementController : Controller
 
         return RedirectToAction("Index");
     }
+
+    #endregion
 }

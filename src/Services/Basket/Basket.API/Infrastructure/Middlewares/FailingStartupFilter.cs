@@ -2,11 +2,20 @@
 
 public class FailingStartupFilter : IStartupFilter
 {
+    #region Fields
     private readonly Action<FailingOptions> _options;
+
+    #endregion
+
+    #region Ctor
     public FailingStartupFilter(Action<FailingOptions> optionsAction)
     {
         _options = optionsAction;
     }
+
+    #endregion
+
+    #region Methods
 
     public Action<IApplicationBuilder> Configure(Action<IApplicationBuilder> next)
     {
@@ -16,5 +25,7 @@ public class FailingStartupFilter : IStartupFilter
             next(app);
         };
     }
+
+    #endregion
 }
 

@@ -18,9 +18,9 @@ public class EventBusServiceBus : IEventBus, IDisposable
 
     #region Ctor
     public EventBusServiceBus(IServiceBusPersisterConnection serviceBusPersisterConnection,
-        ILogger<EventBusServiceBus> logger, 
-        IEventBusSubscriptionsManager subsManager, 
-        ILifetimeScope autofac, 
+        ILogger<EventBusServiceBus> logger,
+        IEventBusSubscriptionsManager subsManager,
+        ILifetimeScope autofac,
         string subscriptionClientName)
     {
         _serviceBusPersisterConnection = serviceBusPersisterConnection;
@@ -126,6 +126,16 @@ public class EventBusServiceBus : IEventBus, IDisposable
         _subsManager.RemoveDynamicSubscription<TH>(eventName);
     }
 
+    public void Dispose()
+    {
+        _subsManager.Clear();
+        _processor.CloseAsync().GetAwaiter().GetResult();
+    }
+
+    #endregion
+
+    #region Private Methods
+
     private async Task RegisterSubscriptionClientMessageHandlerAsync()
     {
         _processor.ProcessMessageAsync +=
@@ -143,12 +153,6 @@ public class EventBusServiceBus : IEventBus, IDisposable
 
         _processor.ProcessErrorAsync += ErrorHandler;
         await _processor.StartProcessingAsync();
-    }
-
-    public void Dispose()
-    {
-        _subsManager.Clear();
-        _processor.CloseAsync().GetAwaiter().GetResult();
     }
 
     private Task ErrorHandler(ProcessErrorEventArgs args)

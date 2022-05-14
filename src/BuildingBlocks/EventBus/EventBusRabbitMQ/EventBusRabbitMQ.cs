@@ -2,6 +2,7 @@
 
 public class EventBusRabbitMQ : IEventBus, IDisposable
 {
+    #region Fields
     const string BROKER_NAME = "eshop_event_bus";
     const string AUTOFAC_SCOPE_NAME = "eshop_event_bus";
 
@@ -13,6 +14,10 @@ public class EventBusRabbitMQ : IEventBus, IDisposable
 
     private IModel _consumerChannel;
     private string _queueName;
+
+    #endregion
+
+    #region Ctor
 
     public EventBusRabbitMQ(IRabbitMQPersistentConnection persistentConnection,
         ILogger<EventBusRabbitMQ> logger,
@@ -31,30 +36,15 @@ public class EventBusRabbitMQ : IEventBus, IDisposable
         _subsManager.OnEventRemoved += SubsManager_OnEventRemoved;
     }
 
-    private void SubsManager_OnEventRemoved(object sender, string eventName)
-    {
-        if (!_persistentConnection.IsConnected)
-        {
-            _persistentConnection.TryConnect();
-        }
+    #endregion
 
-        using var channel = _persistentConnection.CreateModel();
-        channel.QueueUnbind(queue: _queueName,
-            exchange: BROKER_NAME,
-            routingKey: eventName);
-
-        if (_subsManager.IsEmpty)
-        {
-            _queueName = string.Empty;
-            _consumerChannel.Close();
-        }
-    }
+    #region Methods
 
     public void Publish(IntegrationEvent @event)
     {
-        if (!_persistentConnection.IsConnected) 
+        if (!_persistentConnection.IsConnected)
             _persistentConnection.TryConnect();
-        
+
         var policy = RetryPolicy.Handle<BrokerUnreachableException>()
             .Or<SocketException>()
             .WaitAndRetry(_retryCount, retryAttempt => TimeSpan.FromSeconds(Math.Pow(2, retryAttempt)), (ex, time) =>
@@ -93,7 +83,7 @@ public class EventBusRabbitMQ : IEventBus, IDisposable
     }
 
     public void SubscribeDynamic<TH>(string eventName)
-        where TH : IDynamicIntegrationEventHandler
+       where TH : IDynamicIntegrationEventHandler
     {
         _logger.LogInformation("Subscribing to dynamic event {EventName} with {EventHandler}", eventName, typeof(TH).GetGenericTypeName());
 
@@ -115,25 +105,9 @@ public class EventBusRabbitMQ : IEventBus, IDisposable
         StartBasicConsume();
     }
 
-    private void DoInternalSubscription(string eventName)
-    {
-        var containsKey = _subsManager.HasSubscriptionsForEvent(eventName);
-        if (!containsKey)
-        {
-            if (!_persistentConnection.IsConnected)
-            {
-                _persistentConnection.TryConnect();
-            }
-
-            _consumerChannel.QueueBind(queue: _queueName,
-                                exchange: BROKER_NAME,
-                                routingKey: eventName);
-        }
-    }
-
     public void Unsubscribe<T, TH>()
-        where T : IntegrationEvent
-        where TH : IIntegrationEventHandler<T>
+       where T : IntegrationEvent
+       where TH : IIntegrationEventHandler<T>
     {
         var eventName = _subsManager.GetEventKey<T>();
 
@@ -156,6 +130,45 @@ public class EventBusRabbitMQ : IEventBus, IDisposable
         }
 
         _subsManager.Clear();
+    }
+
+    #endregion
+
+    #region Private Methods
+
+    private void SubsManager_OnEventRemoved(object sender, string eventName)
+    {
+        if (!_persistentConnection.IsConnected)
+        {
+            _persistentConnection.TryConnect();
+        }
+
+        using var channel = _persistentConnection.CreateModel();
+        channel.QueueUnbind(queue: _queueName,
+            exchange: BROKER_NAME,
+            routingKey: eventName);
+
+        if (_subsManager.IsEmpty)
+        {
+            _queueName = string.Empty;
+            _consumerChannel.Close();
+        }
+    }
+ 
+    private void DoInternalSubscription(string eventName)
+    {
+        var containsKey = _subsManager.HasSubscriptionsForEvent(eventName);
+        if (!containsKey)
+        {
+            if (!_persistentConnection.IsConnected)
+            {
+                _persistentConnection.TryConnect();
+            }
+
+            _consumerChannel.QueueBind(queue: _queueName,
+                                exchange: BROKER_NAME,
+                                routingKey: eventName);
+        }
     }
 
     private void StartBasicConsume()
@@ -267,4 +280,6 @@ public class EventBusRabbitMQ : IEventBus, IDisposable
             _logger.LogWarning("No subscription for RabbitMQ event: {EventName}", eventName);
         }
     }
+
+    #endregion
 }

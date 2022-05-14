@@ -43,7 +43,8 @@ COPY "docker-compose.dcproj" "docker-compose.dcproj"
 
 COPY "NuGet.config" "NuGet.config"
 
-# RUN dotnet restore "eShopOnContainers-ServicesAndWebApps.sln"
+# RUN dotnet restore "eCommerceOnContainers-ServicesAndWebApps.sln"
+
 COPY . .
 WORKDIR /src/Web/WebStatus
 RUN dotnet publish -c Release -o /app

@@ -22,6 +22,7 @@ public class Cart : ViewComponent
 
         return View(vm);
     }
+
     private async Task<int> ItemsInCartAsync(ApplicationUser user)
     {
         var basket = await _cartSvc.GetBasket(user);

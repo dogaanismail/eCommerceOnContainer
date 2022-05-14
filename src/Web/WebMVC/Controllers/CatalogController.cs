@@ -2,10 +2,18 @@
 
 public class CatalogController : Controller
 {
+    #region Fields
     private ICatalogService _catalogSvc;
 
-    public CatalogController(ICatalogService catalogSvc) =>
-        _catalogSvc = catalogSvc;
+    #endregion
+
+    #region Ctor
+
+    public CatalogController(ICatalogService catalogSvc) => _catalogSvc = catalogSvc;
+
+    #endregion
+
+    #region Methods
 
     public async Task<IActionResult> Index(int? BrandFilterApplied, int? TypesFilterApplied, int? page, [FromQuery] string errorMsg)
     {
@@ -34,4 +42,6 @@ public class CatalogController : Controller
 
         return View(vm);
     }
+
+    #endregion
 }

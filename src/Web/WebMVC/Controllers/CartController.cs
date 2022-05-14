@@ -3,16 +3,27 @@ namespace Microsoft.eCommerceOnContainers.WebMVC.Controllers;
 [Authorize(AuthenticationSchemes = OpenIdConnectDefaults.AuthenticationScheme)]
 public class CartController : Controller
 {
+    #region Fields
     private readonly IBasketService _basketSvc;
     private readonly ICatalogService _catalogSvc;
     private readonly IIdentityParser<ApplicationUser> _appUserParser;
 
-    public CartController(IBasketService basketSvc, ICatalogService catalogSvc, IIdentityParser<ApplicationUser> appUserParser)
+    #endregion
+
+    #region Ctor
+
+    public CartController(IBasketService basketSvc, 
+        ICatalogService catalogSvc, 
+        IIdentityParser<ApplicationUser> appUserParser)
     {
         _basketSvc = basketSvc;
         _catalogSvc = catalogSvc;
         _appUserParser = appUserParser;
     }
+
+    #endregion
+
+    #region Methods
 
     public async Task<IActionResult> Index()
     {
@@ -72,8 +83,14 @@ public class CartController : Controller
         return RedirectToAction("Index", "Catalog", new { errorMsg = ViewBag.BasketInoperativeMsg });
     }
 
+    #endregion
+
+    #region Private Methods
+
     private void HandleException(Exception ex)
     {
         ViewBag.BasketInoperativeMsg = $"Basket Service is inoperative {ex.GetType().Name} - {ex.Message}";
     }
+
+    #endregion
 }

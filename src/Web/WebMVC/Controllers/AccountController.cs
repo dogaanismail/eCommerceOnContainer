@@ -3,12 +3,21 @@
 [Authorize(AuthenticationSchemes = OpenIdConnectDefaults.AuthenticationScheme)]
 public class AccountController : Controller
 {
+    #region Fields
     private readonly ILogger<AccountController> _logger;
+
+    #endregion
+
+    #region Ctor
 
     public AccountController(ILogger<AccountController> logger)
     {
         _logger = logger ?? throw new ArgumentNullException(nameof(logger));
     }
+
+    #endregion
+
+    #region Endpoints
 
     [Authorize(AuthenticationSchemes = OpenIdConnectDefaults.AuthenticationScheme)]
     public async Task<IActionResult> SignIn(string returnUrl)
@@ -36,7 +45,10 @@ public class AccountController : Controller
         // "Catalog" because UrlHelper doesn't support nameof() for controllers
         // https://github.com/aspnet/Mvc/issues/5853
         var homeUrl = Url.Action(nameof(CatalogController.Index), "Catalog");
+
         return new SignOutResult(OpenIdConnectDefaults.AuthenticationScheme,
             new AspNetCore.Authentication.AuthenticationProperties { RedirectUri = homeUrl });
     }
+
+    #endregion
 }

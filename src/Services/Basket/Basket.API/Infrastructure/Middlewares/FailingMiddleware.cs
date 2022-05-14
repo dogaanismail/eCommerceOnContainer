@@ -4,18 +4,29 @@ using Microsoft.Extensions.Logging;
 
 public class FailingMiddleware
 {
+    #region Fields
     private readonly RequestDelegate _next;
     private bool _mustFail;
     private readonly FailingOptions _options;
     private readonly ILogger _logger;
 
-    public FailingMiddleware(RequestDelegate next, ILogger<FailingMiddleware> logger, FailingOptions options)
+    #endregion
+
+    #region Ctor
+
+    public FailingMiddleware(RequestDelegate next, 
+        ILogger<FailingMiddleware> logger, 
+        FailingOptions options)
     {
         _next = next;
         _options = options;
         _mustFail = false;
         _logger = logger;
     }
+
+    #endregion
+
+    #region Methods
 
     public async Task Invoke(HttpContext context)
     {
@@ -38,6 +49,10 @@ public class FailingMiddleware
             await _next.Invoke(context);
         }
     }
+
+    #endregion
+
+    #region Private Methods
 
     private async Task ProcessConfigRequest(HttpContext context)
     {
@@ -79,12 +94,12 @@ public class FailingMiddleware
         var rpath = context.Request.Path.Value;
 
         if (_options.NotFilteredPaths.Any(p => p.Equals(rpath, StringComparison.InvariantCultureIgnoreCase)))
-        {
             return false;
-        }
-
+        
         return _mustFail &&
             (_options.EndpointPaths.Any(x => x == rpath)
             || _options.EndpointPaths.Count == 0);
     }
+
+    #endregion
 }

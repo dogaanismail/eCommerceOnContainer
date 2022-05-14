@@ -5,15 +5,26 @@ using Microsoft.eCommerceOnContainers.WebMVC.ViewModels;
 [Authorize(AuthenticationSchemes = OpenIdConnectDefaults.AuthenticationScheme)]
 public class OrderController : Controller
 {
+    #region Fields
     private IOrderingService _orderSvc;
     private IBasketService _basketSvc;
     private readonly IIdentityParser<ApplicationUser> _appUserParser;
-    public OrderController(IOrderingService orderSvc, IBasketService basketSvc, IIdentityParser<ApplicationUser> appUserParser)
+
+    #endregion
+
+    #region Ctor
+    public OrderController(IOrderingService orderSvc, 
+        IBasketService basketSvc, 
+        IIdentityParser<ApplicationUser> appUserParser)
     {
         _appUserParser = appUserParser;
         _orderSvc = orderSvc;
         _basketSvc = basketSvc;
     }
+
+    #endregion
+
+    #region Endpoints
 
     public async Task<IActionResult> Create()
     {
@@ -38,7 +49,6 @@ public class OrderController : Controller
 
                 await _basketSvc.Checkout(basket);
 
-                //Redirect to historic list.
                 return RedirectToAction("Index");
             }
         }
@@ -72,4 +82,6 @@ public class OrderController : Controller
         var vm = await _orderSvc.GetMyOrders(user);
         return View(vm);
     }
+
+    #endregion
 }

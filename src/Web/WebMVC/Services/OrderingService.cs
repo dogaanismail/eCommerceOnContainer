@@ -4,18 +4,27 @@ using Microsoft.eCommerceOnContainers.WebMVC.ViewModels;
 
 public class OrderingService : IOrderingService
 {
+    #region Fields
     private HttpClient _httpClient;
     private readonly string _remoteServiceBaseUrl;
     private readonly IOptions<AppSettings> _settings;
 
+    #endregion
 
-    public OrderingService(HttpClient httpClient, IOptions<AppSettings> settings)
+    #region Ctor
+
+    public OrderingService(HttpClient httpClient, 
+        IOptions<AppSettings> settings)
     {
         _httpClient = httpClient;
         _settings = settings;
 
         _remoteServiceBaseUrl = $"{settings.Value.PurchaseUrl}/o/api/v1/orders";
     }
+
+    #endregion
+
+    #region Methods
 
     async public Task<Order> GetOrder(ApplicationUser user, string id)
     {
@@ -45,8 +54,6 @@ public class OrderingService : IOrderingService
         return response;
     }
 
-
-
     async public Task CancelOrder(string orderId)
     {
         var order = new OrderDTO()
@@ -60,10 +67,8 @@ public class OrderingService : IOrderingService
         var response = await _httpClient.PutAsync(uri, orderContent);
 
         if (response.StatusCode == System.Net.HttpStatusCode.InternalServerError)
-        {
             throw new Exception("Error cancelling order, try later.");
-        }
-
+        
         response.EnsureSuccessStatusCode();
     }
 
@@ -80,10 +85,8 @@ public class OrderingService : IOrderingService
         var response = await _httpClient.PutAsync(uri, orderContent);
 
         if (response.StatusCode == System.Net.HttpStatusCode.InternalServerError)
-        {
             throw new Exception("Error in ship order process, try later.");
-        }
-
+        
         response.EnsureSuccessStatusCode();
     }
 
@@ -137,4 +140,6 @@ public class OrderingService : IOrderingService
             RequestId = order.RequestId
         };
     }
+
+    #endregion
 }

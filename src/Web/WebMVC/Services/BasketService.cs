@@ -4,13 +4,19 @@ using Microsoft.eCommerceOnContainers.WebMVC.ViewModels;
 
 public class BasketService : IBasketService
 {
+    #region Fields
     private readonly IOptions<AppSettings> _settings;
     private readonly HttpClient _apiClient;
     private readonly ILogger<BasketService> _logger;
     private readonly string _basketByPassUrl;
     private readonly string _purchaseUrl;
 
-    public BasketService(HttpClient httpClient, IOptions<AppSettings> settings, ILogger<BasketService> logger)
+    #endregion
+
+    #region Ctor
+    public BasketService(HttpClient httpClient, 
+        IOptions<AppSettings> settings, 
+        ILogger<BasketService> logger)
     {
         _apiClient = httpClient;
         _settings = settings;
@@ -20,6 +26,10 @@ public class BasketService : IBasketService
         _purchaseUrl = $"{_settings.Value.PurchaseUrl}/api/v1";
     }
 
+    #endregion
+
+    #region Methods
+
     public async Task<Basket> GetBasket(ApplicationUser user)
     {
         var uri = API.Basket.GetBasket(_basketByPassUrl, user.Id);
@@ -27,6 +37,7 @@ public class BasketService : IBasketService
         var response = await _apiClient.GetAsync(uri);
         _logger.LogDebug("[GetBasket] -> response code {StatusCode}", response.StatusCode);
         var responseString = await response.Content.ReadAsStringAsync();
+
         return string.IsNullOrEmpty(responseString) ?
             new Basket() { BuyerId = user.Id } :
             JsonSerializer.Deserialize<Basket>(responseString, new JsonSerializerOptions
@@ -117,4 +128,6 @@ public class BasketService : IBasketService
 
         var response = await _apiClient.PostAsync(uri, basketContent);
     }
+
+    #endregion
 }

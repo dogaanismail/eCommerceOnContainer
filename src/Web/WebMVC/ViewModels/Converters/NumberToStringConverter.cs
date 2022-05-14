@@ -9,14 +9,12 @@ public class NumberToStringConverter : JsonConverter<string>
             var numberValue = reader.GetInt32();
             return numberValue.ToString();
         }
+
         else if (reader.TokenType == JsonTokenType.String)
-        {
             return reader.GetString();
-        }
+        
         else
-        {
-            throw new JsonException();
-        }
+            throw new JsonException();       
     }
 
     public override void Write(Utf8JsonWriter writer, string value, JsonSerializerOptions options)
