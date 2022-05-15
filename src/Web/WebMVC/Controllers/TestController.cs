@@ -12,14 +12,24 @@ class TestPayload
 [Authorize]
 public class TestController : Controller
 {
+    #region Fields
     private readonly IHttpClientFactory _client;
     private readonly IIdentityParser<ApplicationUser> _appUserParser;
 
-    public TestController(IHttpClientFactory client, IIdentityParser<ApplicationUser> identityParser)
+    #endregion
+
+    #region Ctor
+
+    public TestController(IHttpClientFactory client, 
+        IIdentityParser<ApplicationUser> identityParser)
     {
         _client = client;
         _appUserParser = identityParser;
     }
+
+    #endregion
+
+    #region Methods
 
     public async Task<IActionResult> Ocelot()
     {
@@ -34,7 +44,6 @@ public class TestController : Controller
 
         var content = new StringContent(JsonSerializer.Serialize(payload), System.Text.Encoding.UTF8, "application/json");
 
-
         var response = await _client.CreateClient(nameof(IBasketService))
             .PostAsync(url, content);
 
@@ -44,9 +53,10 @@ public class TestController : Controller
 
             return Ok(str);
         }
+
         else
-        {
-            return Ok(new { response.StatusCode, response.ReasonPhrase });
-        }
+            return Ok(new { response.StatusCode, response.ReasonPhrase });        
     }
+
+    #endregion
 }

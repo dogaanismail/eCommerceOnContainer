@@ -50,10 +50,9 @@ public class CartController : Controller
         {
             var user = _appUserParser.Parse(HttpContext.User);
             var basket = await _basketSvc.SetQuantities(user, quantities);
+
             if (action == "[ Checkout ]")
-            {
-                return RedirectToAction("Create", "Order");
-            }
+                return RedirectToAction("Create", "Order");           
         }
         catch (Exception ex)
         {
@@ -72,6 +71,7 @@ public class CartController : Controller
                 var user = _appUserParser.Parse(HttpContext.User);
                 await _basketSvc.AddItemToBasket(user, productDetails.Id);
             }
+
             return RedirectToAction("Index", "Catalog");
         }
         catch (Exception ex)

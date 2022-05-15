@@ -62,10 +62,8 @@ public class BasketController : ControllerBase
         var basket = await _repository.GetBasketAsync(userId);
 
         if (basket == null)
-        {
             return BadRequest();
-        }
-
+        
         var userName = this.HttpContext.User.FindFirst(x => x.Type == ClaimTypes.Name).Value;
 
         var eventMessage = new UserCheckoutAcceptedIntegrationEvent(userId, userName, basketCheckout.City, basketCheckout.Street,

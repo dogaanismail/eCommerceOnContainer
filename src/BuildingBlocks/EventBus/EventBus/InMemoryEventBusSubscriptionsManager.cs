@@ -40,32 +40,8 @@ public partial class InMemoryEventBusSubscriptionsManager : IEventBusSubscriptio
         DoAddSubscription(typeof(TH), eventName, isDynamic: false);
 
         if (!_eventTypes.Contains(typeof(T)))
-        {
             _eventTypes.Add(typeof(T));
-        }
-    }
 
-    private void DoAddSubscription(Type handlerType, string eventName, bool isDynamic)
-    {
-        if (!HasSubscriptionsForEvent(eventName))
-        {
-            _handlers.Add(eventName, new List<SubscriptionInfo>());
-        }
-
-        if (_handlers[eventName].Any(s => s.HandlerType == handlerType))
-        {
-            throw new ArgumentException(
-                $"Handler Type {handlerType.Name} already registered for '{eventName}'", nameof(handlerType));
-        }
-
-        if (isDynamic)
-        {
-            _handlers[eventName].Add(SubscriptionInfo.Dynamic(handlerType));
-        }
-        else
-        {
-            _handlers[eventName].Add(SubscriptionInfo.Typed(handlerType));
-        }
     }
 
     public void RemoveDynamicSubscription<TH>(string eventName)
@@ -84,6 +60,50 @@ public partial class InMemoryEventBusSubscriptionsManager : IEventBusSubscriptio
         DoRemoveHandler(eventName, handlerToRemove);
     }
 
+    public IEnumerable<SubscriptionInfo> GetHandlersForEvent<T>() where T : IntegrationEvent
+    {
+        var key = GetEventKey<T>();
+        return GetHandlersForEvent(key);
+    }
+
+    public IEnumerable<SubscriptionInfo> GetHandlersForEvent(string eventName) => _handlers[eventName];
+
+    public bool HasSubscriptionsForEvent<T>() where T : IntegrationEvent
+    {
+        var key = GetEventKey<T>();
+        return HasSubscriptionsForEvent(key);
+    }
+
+    public bool HasSubscriptionsForEvent(string eventName) => _handlers.ContainsKey(eventName);
+
+    public Type GetEventTypeByName(string eventName) => _eventTypes.SingleOrDefault(t => t.Name == eventName);
+
+    public string GetEventKey<T>()
+    {
+        return typeof(T).Name;
+    }
+
+    #endregion
+
+    #region Private Methods
+
+    private void DoAddSubscription(Type handlerType, string eventName, bool isDynamic)
+    {
+        if (!HasSubscriptionsForEvent(eventName))
+            _handlers.Add(eventName, new List<SubscriptionInfo>());
+
+        if (_handlers[eventName].Any(s => s.HandlerType == handlerType))
+            throw new ArgumentException(
+                $"Handler Type {handlerType.Name} already registered for '{eventName}'", nameof(handlerType));
+
+
+        if (isDynamic)
+            _handlers[eventName].Add(SubscriptionInfo.Dynamic(handlerType));
+
+        else
+            _handlers[eventName].Add(SubscriptionInfo.Typed(handlerType));
+    }
+
     private void DoRemoveHandler(string eventName, SubscriptionInfo subsToRemove)
     {
         if (subsToRemove != null)
@@ -93,22 +113,14 @@ public partial class InMemoryEventBusSubscriptionsManager : IEventBusSubscriptio
             {
                 _handlers.Remove(eventName);
                 var eventType = _eventTypes.SingleOrDefault(e => e.Name == eventName);
+
                 if (eventType != null)
-                {
                     _eventTypes.Remove(eventType);
-                }
+
                 RaiseOnEventRemoved(eventName);
             }
-
         }
     }
-
-    public IEnumerable<SubscriptionInfo> GetHandlersForEvent<T>() where T : IntegrationEvent
-    {
-        var key = GetEventKey<T>();
-        return GetHandlersForEvent(key);
-    }
-    public IEnumerable<SubscriptionInfo> GetHandlersForEvent(string eventName) => _handlers[eventName];
 
     private void RaiseOnEventRemoved(string eventName)
     {
@@ -138,21 +150,6 @@ public partial class InMemoryEventBusSubscriptionsManager : IEventBusSubscriptio
         }
 
         return _handlers[eventName].SingleOrDefault(s => s.HandlerType == handlerType);
-
-    }
-
-    public bool HasSubscriptionsForEvent<T>() where T : IntegrationEvent
-    {
-        var key = GetEventKey<T>();
-        return HasSubscriptionsForEvent(key);
-    }
-    public bool HasSubscriptionsForEvent(string eventName) => _handlers.ContainsKey(eventName);
-
-    public Type GetEventTypeByName(string eventName) => _eventTypes.SingleOrDefault(t => t.Name == eventName);
-
-    public string GetEventKey<T>()
-    {
-        return typeof(T).Name;
     }
 
     #endregion

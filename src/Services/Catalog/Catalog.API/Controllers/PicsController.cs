@@ -32,9 +32,8 @@ public class PicController : ControllerBase
     {
         if (catalogItemId <= 0)
             return BadRequest();
-       
-        var item = await _catalogContext.CatalogItems
-            .SingleOrDefaultAsync(ci => ci.Id == catalogItemId);
+
+        var item = await _catalogContext.CatalogItems.SingleOrDefaultAsync(ci => ci.Id == catalogItemId);
 
         if (item != null)
         {

@@ -41,9 +41,7 @@ public class CatalogController : ControllerBase
             var items = await GetItemsByIdsAsync(ids);
 
             if (!items.Any())
-            {
                 return BadRequest("ids value invalid. Must be comma-separated list of numbers");
-            }
 
             return Ok(items);
         }
@@ -71,9 +69,7 @@ public class CatalogController : ControllerBase
     public async Task<ActionResult<CatalogItem>> ItemByIdAsync(int id)
     {
         if (id <= 0)
-        {
             return BadRequest();
-        }
 
         var item = await _catalogContext.CatalogItems.SingleOrDefaultAsync(ci => ci.Id == id);
 
@@ -83,9 +79,7 @@ public class CatalogController : ControllerBase
         item.FillProductUrl(baseUri, azureStorageEnabled: azureStorageEnabled);
 
         if (item != null)
-        {
             return item;
-        }
 
         return NotFound();
     }
@@ -122,9 +116,7 @@ public class CatalogController : ControllerBase
         root = root.Where(ci => ci.CatalogTypeId == catalogTypeId);
 
         if (catalogBrandId.HasValue)
-        {
             root = root.Where(ci => ci.CatalogBrandId == catalogBrandId);
-        }
 
         var totalItems = await root
             .LongCountAsync();
@@ -148,9 +140,7 @@ public class CatalogController : ControllerBase
         var root = (IQueryable<CatalogItem>)_catalogContext.CatalogItems;
 
         if (catalogBrandId.HasValue)
-        {
             root = root.Where(ci => ci.CatalogBrandId == catalogBrandId);
-        }
 
         var totalItems = await root
             .LongCountAsync();
@@ -193,15 +183,13 @@ public class CatalogController : ControllerBase
         var catalogItem = await _catalogContext.CatalogItems.SingleOrDefaultAsync(i => i.Id == productToUpdate.Id);
 
         if (catalogItem == null)
-        {
             return NotFound(new { Message = $"Item with id {productToUpdate.Id} not found." });
-        }
 
         var oldPrice = catalogItem.Price;
         var raiseProductPriceChangedEvent = oldPrice != productToUpdate.Price;
 
-        // Update current product
         catalogItem = productToUpdate;
+
         _catalogContext.CatalogItems.Update(catalogItem);
 
         if (raiseProductPriceChangedEvent) // Save product's data and publish integration event through the Event Bus if price has changed
@@ -256,9 +244,7 @@ public class CatalogController : ControllerBase
         var product = _catalogContext.CatalogItems.SingleOrDefault(x => x.Id == id);
 
         if (product == null)
-        {
             return NotFound();
-        }
 
         _catalogContext.CatalogItems.Remove(product);
 
@@ -289,9 +275,7 @@ public class CatalogController : ControllerBase
         var numIds = ids.Split(',').Select(id => (Ok: int.TryParse(id, out int x), Value: x));
 
         if (!numIds.All(nid => nid.Ok))
-        {
             return new List<CatalogItem>();
-        }
 
         var idsToSelect = numIds.Select(id => id.Value);
 

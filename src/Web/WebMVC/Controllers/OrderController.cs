@@ -64,15 +64,14 @@ public class OrderController : Controller
     {
         await _orderSvc.CancelOrder(orderId);
 
-        //Redirect to historic list.
         return RedirectToAction("Index");
     }
 
     public async Task<IActionResult> Detail(string orderId)
     {
         var user = _appUserParser.Parse(HttpContext.User);
-
         var order = await _orderSvc.GetOrder(user, orderId);
+
         return View(order);
     }
 

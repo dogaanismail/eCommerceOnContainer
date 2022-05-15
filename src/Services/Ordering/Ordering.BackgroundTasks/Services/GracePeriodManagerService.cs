@@ -1,7 +1,5 @@
 ﻿using Dapper;
 using Microsoft.eCommerceOnContainers.BuildingBlocks.EventBus.Abstractions;
-using Microsoft.Extensions.Hosting;
-using Microsoft.Extensions.Logging;
 using Microsoft.Extensions.Options;
 using Ordering.BackgroundTasks.Events;
 using System.Data.SqlClient;
@@ -10,18 +8,27 @@ namespace Ordering.BackgroundTasks.Services
 {
     public class GracePeriodManagerService : BackgroundService
     {
+        #region Fields
         private readonly ILogger<GracePeriodManagerService> _logger;
         private readonly BackgroundTaskSettings _settings;
         private readonly IEventBus _eventBus;
 
-        public GracePeriodManagerService(IOptions<BackgroundTaskSettings> settings, 
-            IEventBus eventBus, 
+        #endregion
+
+        #region Ctor
+
+        public GracePeriodManagerService(IOptions<BackgroundTaskSettings> settings,
+            IEventBus eventBus,
             ILogger<GracePeriodManagerService> logger)
         {
             _settings = settings?.Value ?? throw new ArgumentNullException(nameof(settings));
             _eventBus = eventBus ?? throw new ArgumentNullException(nameof(eventBus));
             _logger = logger ?? throw new ArgumentNullException(nameof(logger));
         }
+
+        #endregion
+
+        #region Methods
 
         protected override async Task ExecuteAsync(CancellationToken stoppingToken)
         {
@@ -40,6 +47,10 @@ namespace Ordering.BackgroundTasks.Services
 
             _logger.LogDebug("GracePeriodManagerService background task is stopping.");
         }
+
+        #endregion
+
+        #region Private Methods
 
         private void CheckConfirmedGracePeriodOrders()
         {
@@ -76,8 +87,9 @@ namespace Ordering.BackgroundTasks.Services
                 _logger.LogCritical(exception, "FATAL ERROR: Database connections could not be opened: {Message}", exception.Message);
             }
 
-
             return orderIds;
         }
+
+        #endregion
     }
 }

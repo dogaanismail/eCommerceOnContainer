@@ -43,6 +43,7 @@ public class EventBusServiceBus : IEventBus, IDisposable
     public void Publish(IntegrationEvent @event)
     {
         var eventName = @event.GetType().Name.Replace(INTEGRATION_EVENT_SUFFIX, "");
+
         var jsonMessage = JsonSerializer.Serialize(@event, @event.GetType());
         var body = Encoding.UTF8.GetBytes(jsonMessage);
 
@@ -53,9 +54,7 @@ public class EventBusServiceBus : IEventBus, IDisposable
             Subject = eventName,
         };
 
-        _sender.SendMessageAsync(message)
-            .GetAwaiter()
-            .GetResult();
+        _sender.SendMessageAsync(message).GetAwaiter().GetResult();
     }
 
     public void SubscribeDynamic<TH>(string eventName)
@@ -172,6 +171,7 @@ public class EventBusServiceBus : IEventBus, IDisposable
         {
             var scope = _autofac.BeginLifetimeScope(AUTOFAC_SCOPE_NAME);
             var subscriptions = _subsManager.GetHandlersForEvent(eventName);
+
             foreach (var subscription in subscriptions)
             {
                 if (subscription.IsDynamic)
@@ -184,10 +184,13 @@ public class EventBusServiceBus : IEventBus, IDisposable
                 else
                 {
                     var handler = scope.ResolveOptional(subscription.HandlerType);
+
                     if (handler == null) continue;
+
                     var eventType = _subsManager.GetEventTypeByName(eventName);
                     var integrationEvent = JsonSerializer.Deserialize(message, eventType);
                     var concreteType = typeof(IIntegrationEventHandler<>).MakeGenericType(eventType);
+
                     await (Task)concreteType.GetMethod("Handle").Invoke(handler, new object[] { integrationEvent });
                 }
             }
