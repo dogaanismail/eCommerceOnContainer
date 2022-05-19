@@ -61,20 +61,16 @@ public class Startup
                 };
 
                 if (!string.IsNullOrEmpty(Configuration["EventBusUserName"]))
-                {
                     factory.UserName = Configuration["EventBusUserName"];
-                }
-
+                
                 if (!string.IsNullOrEmpty(Configuration["EventBusPassword"]))
-                {
                     factory.Password = Configuration["EventBusPassword"];
-                }
-
+                
                 var retryCount = 5;
+
                 if (!string.IsNullOrEmpty(Configuration["EventBusRetryCount"]))
-                {
                     retryCount = int.Parse(Configuration["EventBusRetryCount"]);
-                }
+                
 
                 return new DefaultRabbitMQPersistentConnection(factory, logger, retryCount);
             });
@@ -122,6 +118,7 @@ public class Startup
                 Predicate = _ => true,
                 ResponseWriter = UIResponseWriter.WriteHealthCheckUIResponse
             });
+
             endpoints.MapHealthChecks("/liveness", new HealthCheckOptions
             {
                 Predicate = r => r.Name.Contains("self")

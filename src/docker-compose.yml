@@ -132,13 +132,13 @@ services:
       - webshoppingagg
       - webshoppingapigw
 
-  #webhooks-client:
-  #  image: ${REGISTRY:-eshop}/webhooks.client:${PLATFORM:-linux}-${TAG:-latest}
-  #  build:
-  #    context: .
-  #    dockerfile: Web/WebhookClient/Dockerfile
-  #  depends_on:
-  #    - webhooks-api
+  webhooks-client:
+    image: ${REGISTRY:-eshop}/webhooks.client:${PLATFORM:-linux}-${TAG:-latest}
+    build:
+      context: .
+      dockerfile: Web/WebhookClient/Dockerfile
+    depends_on:
+      - webhooks-api
 
   webshoppingapigw:
     image: envoyproxy/envoy:v1.11.1

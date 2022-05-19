@@ -111,6 +111,8 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Web.Shopping.HttpAggregator
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "WebMVC", "Web\WebMVC\WebMVC.csproj", "{0BA52751-236C-42EF-8000-F53012F496D1}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WebhookClient", "Web\WebhookClient\WebhookClient.csproj", "{0F46A00C-31C0-4905-B587-802538C76D86}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -221,6 +223,10 @@ Global
 		{0BA52751-236C-42EF-8000-F53012F496D1}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{0BA52751-236C-42EF-8000-F53012F496D1}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{0BA52751-236C-42EF-8000-F53012F496D1}.Release|Any CPU.Build.0 = Release|Any CPU
+		{0F46A00C-31C0-4905-B587-802538C76D86}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{0F46A00C-31C0-4905-B587-802538C76D86}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{0F46A00C-31C0-4905-B587-802538C76D86}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{0F46A00C-31C0-4905-B587-802538C76D86}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -272,6 +278,7 @@ Global
 		{A41F37B5-580C-4BF9-8880-B4E0BFFD8B10} = {1F695341-41B3-4490-9FEB-73342C76ADFF}
 		{D36DEF7A-0357-442A-8B58-625F73C61A10} = {A41F37B5-580C-4BF9-8880-B4E0BFFD8B10}
 		{0BA52751-236C-42EF-8000-F53012F496D1} = {3A7D54D5-1CA0-48DC-8C4A-33A0DE769E6F}
+		{0F46A00C-31C0-4905-B587-802538C76D86} = {3A7D54D5-1CA0-48DC-8C4A-33A0DE769E6F}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {F60F1DAF-C283-44EA-A3FB-29B705ECAEBA}
