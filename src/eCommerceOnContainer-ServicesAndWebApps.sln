@@ -111,11 +111,13 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Web.Shopping.HttpAggregator
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "WebMVC", "Web\WebMVC\WebMVC.csproj", "{0BA52751-236C-42EF-8000-F53012F496D1}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WebhookClient", "Web\WebhookClient\WebhookClient.csproj", "{0F46A00C-31C0-4905-B587-802538C76D86}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "WebhookClient", "Web\WebhookClient\WebhookClient.csproj", "{0F46A00C-31C0-4905-B587-802538C76D86}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "tests", "tests", "{5543D800-8E57-492E-BACA-F51B6B30E2A7}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EventBus.Tests", "BuildingBlocks\EventBus\EventBus.Tests\EventBus.Tests.csproj", "{B7A9E7A8-707C-48DF-975B-4B211A612251}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "EventBus.Tests", "BuildingBlocks\EventBus\EventBus.Tests\EventBus.Tests.csproj", "{B7A9E7A8-707C-48DF-975B-4B211A612251}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Application.FunctionalTests", "Tests\Services\Application.FunctionalTests\Application.FunctionalTests.csproj", "{19E689C1-9C0B-47E3-9CA5-6F9106AB5A6E}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -235,6 +237,10 @@ Global
 		{B7A9E7A8-707C-48DF-975B-4B211A612251}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{B7A9E7A8-707C-48DF-975B-4B211A612251}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{B7A9E7A8-707C-48DF-975B-4B211A612251}.Release|Any CPU.Build.0 = Release|Any CPU
+		{19E689C1-9C0B-47E3-9CA5-6F9106AB5A6E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{19E689C1-9C0B-47E3-9CA5-6F9106AB5A6E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{19E689C1-9C0B-47E3-9CA5-6F9106AB5A6E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{19E689C1-9C0B-47E3-9CA5-6F9106AB5A6E}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -289,6 +295,7 @@ Global
 		{0F46A00C-31C0-4905-B587-802538C76D86} = {3A7D54D5-1CA0-48DC-8C4A-33A0DE769E6F}
 		{5543D800-8E57-492E-BACA-F51B6B30E2A7} = {F3918195-E9B5-42F8-B51A-5931BB7C361F}
 		{B7A9E7A8-707C-48DF-975B-4B211A612251} = {5543D800-8E57-492E-BACA-F51B6B30E2A7}
+		{19E689C1-9C0B-47E3-9CA5-6F9106AB5A6E} = {AAF60640-F0A1-4DD2-A6CF-692DCC2A03B2}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {F60F1DAF-C283-44EA-A3FB-29B705ECAEBA}
