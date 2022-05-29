@@ -1,14 +1,12 @@
 ﻿using System.Net;
-using System.Net.Http;
 using System.Text;
 using System.Text.Json;
-using System.Threading.Tasks;
+using WebMVC.Services.ModelDTOs;
 using Xunit;
 
 namespace Ordering.FunctionalTests
 {
-    public class OrderingScenarios
-        : OrderingScenarioBase
+    public class OrderingScenarios : OrderingScenarioBase
     {
         [Fact]
         public async Task Get_get_all_stored_orders_and_response_ok_status_code()
@@ -44,11 +42,11 @@ namespace Ordering.FunctionalTests
 
         string BuildOrder()
         {
-            //var order = new OrderDTO()
-            //{
-            //    OrderNumber = "-1"
-            //};
-            //return JsonSerializer.Serialize(order);
+            var order = new OrderDTO()
+            {
+                OrderNumber = "-1"
+            };
+            return JsonSerializer.Serialize(order);
 
             return "";
         }

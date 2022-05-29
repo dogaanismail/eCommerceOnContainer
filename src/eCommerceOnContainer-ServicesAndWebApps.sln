@@ -62,9 +62,9 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Ordering.SignalrHub", "Serv
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "tests", "tests", "{289AA10F-7CAA-4004-8F05-EF61DBB78CB0}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Ordering.UnitTests", "Services\Ordering\tests\Ordering.UnitTests\Ordering.UnitTests.csproj", "{6DE2BE02-C2A3-4CC8-A092-5B9A3CAB1163}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Ordering.UnitTests", "Services\Ordering\Ordering.UnitTests\Ordering.UnitTests.csproj", "{6DE2BE02-C2A3-4CC8-A092-5B9A3CAB1163}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Ordering.FunctionalTests", "Services\Ordering\tests\Ordering.FunctionalTests\Ordering.FunctionalTests.csproj", "{35B3BCCC-24A2-4069-A88E-B2ED620B447E}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Ordering.FunctionalTests", "Services\Ordering\Ordering.FunctionalTests\Ordering.FunctionalTests.csproj", "{35B3BCCC-24A2-4069-A88E-B2ED620B447E}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Basket", "Basket", "{537F51B3-5E52-491A-A466-1B4262AEA2C6}"
 EndProject
