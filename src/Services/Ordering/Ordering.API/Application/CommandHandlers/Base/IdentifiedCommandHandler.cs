@@ -40,13 +40,14 @@ public class IdentifiedCommandHandler<T, R> : IRequestHandler<IdentifiedCommand<
     public async Task<R> Handle(IdentifiedCommand<T, R> message, CancellationToken cancellationToken)
     {
         var alreadyExists = await _requestManager.ExistAsync(message.Id);
-        if (alreadyExists)
-        {
+
+        if (alreadyExists)        
             return CreateResultForDuplicateRequest();
-        }
+        
         else
         {
             await _requestManager.CreateRequestForCommandAsync<T>(message.Id);
+
             try
             {
                 var command = message.Command;
