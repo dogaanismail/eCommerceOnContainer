@@ -1,0 +1,16 @@
+﻿global using Microsoft.AspNetCore.Hosting;
+global using Microsoft.AspNetCore.TestHost;
+global using Microsoft.eCommerceOnContainers.BuildingBlocks.IntegrationEventLogEF;
+global using Microsoft.eCommerceOnContainers.Services.Catalog.API.Extensions;
+global using Microsoft.eCommerceOnContainers.Services.Catalog.API.Infrastructure;
+global using Microsoft.eCommerceOnContainers.Services.Catalog.API;
+global using Microsoft.Extensions.Configuration;
+global using Microsoft.Extensions.DependencyInjection;
+global using Microsoft.Extensions.Hosting;
+global using Microsoft.Extensions.Logging;
+global using Microsoft.Extensions.Options;
+global using System.IO;
+global using System.Net;
+global using System.Reflection;
+global using System.Threading.Tasks;
+global using Xunit;
