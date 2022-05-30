@@ -27,6 +27,7 @@ public class WebContextSeed
         try
         {
             string overrideCssFile = Path.Combine(contentRootPath, "Setup", "override.css");
+
             if (!File.Exists(overrideCssFile))
             {
                 log.Error("Override css file '{FileName}' does not exists.", overrideCssFile);
