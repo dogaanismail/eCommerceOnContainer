@@ -78,21 +78,21 @@ services:
     ports:
       - "5111:80"
   
-  # webspa:
-    # environment:
-      # - ASPNETCORE_ENVIRONMENT=Production
-      # - ASPNETCORE_URLS=http://0.0.0.0
-      # - CatalogUrl=http://${ESHOP_PROD_EXTERNAL_DNS_NAME_OR_IP}:5101
-      # - OrderingUrl=http://${ESHOP_PROD_EXTERNAL_DNS_NAME_OR_IP}:5102
-      # - IdentityUrl=http://${ESHOP_PROD_EXTERNAL_DNS_NAME_OR_IP}:5105              #Local: You need to open your host's firewall at range 5100-5110. 
-      # - BasketUrl=http://${ESHOP_PROD_EXTERNAL_DNS_NAME_OR_IP}:5103
-      # - CatalogUrlHC=http://catalog-api/hc
-      # - OrderingUrlHC=http://ordering-api/hc
-      # - IdentityUrlHC=http://identity-api/hc     #Local: Use ${ESHOP_PROD_EXTERNAL_DNS_NAME_OR_IP}, if using external IP or DNS name from browser.          
-      # - BasketUrlHC=http://basket-api/hc
-      # - UseCustomizationData=True         
-    # ports:
-      # - "5104:80"
+  webspa:
+    environment:
+      - ASPNETCORE_ENVIRONMENT=Production
+      - ASPNETCORE_URLS=http://0.0.0.0
+      - CatalogUrl=http://${ESHOP_PROD_EXTERNAL_DNS_NAME_OR_IP}:5101
+      - OrderingUrl=http://${ESHOP_PROD_EXTERNAL_DNS_NAME_OR_IP}:5102
+      - IdentityUrl=http://${ESHOP_PROD_EXTERNAL_DNS_NAME_OR_IP}:5105              #Local: You need to open your host's firewall at range 5100-5110. 
+      - BasketUrl=http://${ESHOP_PROD_EXTERNAL_DNS_NAME_OR_IP}:5103
+      - CatalogUrlHC=http://catalog-api/hc
+      - OrderingUrlHC=http://ordering-api/hc
+      - IdentityUrlHC=http://identity-api/hc     #Local: Use ${ESHOP_PROD_EXTERNAL_DNS_NAME_OR_IP}, if using external IP or DNS name from browser.          
+      - BasketUrlHC=http://basket-api/hc
+      - UseCustomizationData=True         
+    ports:
+      - "5104:80"
 
   webmvc:
     environment:

@@ -32,7 +32,6 @@ services:
       args:
         NODE_IMAGE: stefanscherer/node-windows:10
 
-
 networks:
   default:
     external:

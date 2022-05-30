@@ -245,19 +245,19 @@ services:
     ports:
       - "5107:80"
 
-  #webspa:
-  #  environment:
-  #    - ASPNETCORE_ENVIRONMENT=Development
-  #    - ASPNETCORE_URLS=http://0.0.0.0:80
-  #    - IdentityUrl=http://${ESHOP_EXTERNAL_DNS_NAME_OR_IP}:5105
-  #    - PurchaseUrl=http://${ESHOP_EXTERNAL_DNS_NAME_OR_IP}:5202
-  #    - IdentityUrlHC=http://identity-api/hc
-  #    - UseCustomizationData=True
-  #    - ApplicationInsights__InstrumentationKey=${INSTRUMENTATION_KEY}
-  #    - OrchestratorType=${ORCHESTRATOR_TYPE}
-  #    - SignalrHubUrl=http://${ESHOP_EXTERNAL_DNS_NAME_OR_IP}:5202
-  #  ports:
-  #    - "5104:80"
+  webspa:
+    environment:
+      - ASPNETCORE_ENVIRONMENT=Development
+      - ASPNETCORE_URLS=http://0.0.0.0:80
+      - IdentityUrl=http://${ESHOP_EXTERNAL_DNS_NAME_OR_IP}:5105
+      - PurchaseUrl=http://${ESHOP_EXTERNAL_DNS_NAME_OR_IP}:5202
+      - IdentityUrlHC=http://identity-api/hc
+      - UseCustomizationData=True
+      - ApplicationInsights__InstrumentationKey=${INSTRUMENTATION_KEY}
+      - OrchestratorType=${ORCHESTRATOR_TYPE}
+      - SignalrHubUrl=http://${ESHOP_EXTERNAL_DNS_NAME_OR_IP}:5202
+    ports:
+      - "5104:80"
 
   webmvc:
     environment:

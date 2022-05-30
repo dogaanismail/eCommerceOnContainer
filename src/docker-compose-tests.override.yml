@@ -179,7 +179,6 @@ services:
         - --logger
         - trx;LogFileName=/tests/ordering-unit-test-results.xml
 
-
   payment-api-test:
     environment:
       - ASPNETCORE_ENVIRONMENT=Development

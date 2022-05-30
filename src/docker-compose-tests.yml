@@ -95,7 +95,6 @@ services:
     volumes:
       - ${BUILD_ARTIFACTSTAGINGDIRECTORY:-./tests-results/}:/tests
 
-
   payment-api-test:
     image: ${REGISTRY:-eshop}/payment-api-test:${TAG:-latest}
     build:

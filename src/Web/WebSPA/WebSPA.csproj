@@ -2,14 +2,17 @@
 
 	<PropertyGroup>
 		<TargetFramework>net6.0</TargetFramework>
-		<Nullable>enable</Nullable>
-		<ImplicitUsings>enable</ImplicitUsings>
+		<UserSecretsId>aspnetcorespa-c23d27a4-eb88-4b18-9b77-2a93f3b15119</UserSecretsId>
+		<TypeScriptCompileOnSaveEnabled>false</TypeScriptCompileOnSaveEnabled>
+		<IsTransformWebConfigDisabled>true</IsTransformWebConfigDisabled>
+		<TypeScriptCompileBlocked>true</TypeScriptCompileBlocked>
+		<GeneratedItemPatterns>wwwroot/dist/**</GeneratedItemPatterns>
+		<DefaultItemExcludes>$(DefaultItemExcludes);$(GeneratedItemPatterns)</DefaultItemExcludes>
+		<TypeScriptToolsVersion>4.2</TypeScriptToolsVersion>
 		<DockerDefaultTargetOS>Linux</DockerDefaultTargetOS>
 		<DockerfileContext>..\..\..</DockerfileContext>
 		<DockerComposeProjectPath>..\..\..\docker-compose.dcproj</DockerComposeProjectPath>
 		<SpaRoot>Client\</SpaRoot>
-		<DefaultItemExcludes>$(DefaultItemExcludes);$(GeneratedItemPatterns)</DefaultItemExcludes>
-		<IsTransformWebConfigDisabled>true</IsTransformWebConfigDisabled>
 	</PropertyGroup>
 
 	<ItemGroup>
@@ -36,6 +39,32 @@
 		<PackageReference Include="Serilog.Sinks.Console" Version="4.0.1" />
 		<PackageReference Include="Serilog.Sinks.Seq" Version="5.1.1" />
 		<PackageReference Include="Swashbuckle.AspNetCore" Version="6.2.3" />
+	</ItemGroup>
+
+	<ItemGroup>
+	  <None Include="wwwroot\assets\fonts\Oswald-Bold.svg" />
+	  <None Include="wwwroot\assets\fonts\Oswald-Bold.woff2" />
+	  <None Include="wwwroot\assets\fonts\Oswald-ExtraLight.svg" />
+	  <None Include="wwwroot\assets\fonts\Oswald-ExtraLight.woff2" />
+	  <None Include="wwwroot\assets\fonts\Oswald-Light.svg" />
+	  <None Include="wwwroot\assets\fonts\Oswald-Light.woff2" />
+	  <None Include="wwwroot\assets\fonts\Oswald-Medium.svg" />
+	  <None Include="wwwroot\assets\fonts\Oswald-Medium.woff2" />
+	  <None Include="wwwroot\assets\fonts\Oswald-Regular.svg" />
+	  <None Include="wwwroot\assets\fonts\Oswald-Regular.woff2" />
+	  <None Include="wwwroot\assets\fonts\Oswald-SemiBold.svg" />
+	  <None Include="wwwroot\assets\fonts\Oswald-SemiBold.woff2" />
+	  <None Include="wwwroot\assets\images\add.svg" />
+	  <None Include="wwwroot\assets\images\arrow-right.svg" />
+	  <None Include="wwwroot\assets\images\cart.svg" />
+	  <None Include="wwwroot\assets\images\delete.svg" />
+	  <None Include="wwwroot\assets\images\logo.svg" />
+	  <None Include="wwwroot\assets\images\logo_color.svg" />
+	  <None Include="wwwroot\assets\images\main_banner_text.svg" />
+	  <None Include="wwwroot\assets\images\minus.svg" />
+	  <None Include="wwwroot\assets\images\plus.svg" />
+	  <None Include="wwwroot\assets\images\refresh.svg" />
+	  <None Include="wwwroot\assets\images\user.svg" />
 	</ItemGroup>
 
 	<Target Name="DebugEnsureNodeEnv" BeforeTargets="Build" Condition=" '$(Configuration)' == 'Debug' And !Exists('$(SpaRoot)node_modules') ">
