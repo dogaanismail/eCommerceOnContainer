@@ -1,4 +1,4 @@
-namespace eShopConContainers.WebSPA;
+namespace eCommerceOnContainers.WebSPA;
 
 public class Startup
 {

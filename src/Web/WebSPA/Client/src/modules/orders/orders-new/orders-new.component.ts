@@ -4,11 +4,10 @@ import { catchError } from 'rxjs/operators';
 
 import { OrdersService } from '../orders.service';
 import { BasketService } from '../../basket/basket.service';
-import { IOrder }                                   from '../../shared/models/order.model';
-import { BasketWrapperService }                     from '../../shared/services/basket.wrapper.service';
+import { IOrder } from '../../shared/models/order.model';
 
-import { FormGroup, FormBuilder, Validators  }      from '@angular/forms';
-import { Router }                                   from '@angular/router';
+import { FormGroup, FormBuilder, Validators } from '@angular/forms';
+import { Router } from '@angular/router';
 
 @Component({
     selector: 'esh-orders_new .esh-orders_new .mb-5',
@@ -50,12 +49,11 @@ export class OrdersNewComponent implements OnInit {
         this.order.cardexpiration = new Date(20 + this.newOrderForm.controls['expirationdate'].value.split('/')[1], this.newOrderForm.controls['expirationdate'].value.split('/')[0]);
         this.order.cardsecuritynumber = this.newOrderForm.controls['securitycode'].value;
         let basketCheckout = this.basketService.mapBasketInfoCheckout(this.order);
-        this.basketService.setBasketCheckout(basketCheckout)
-            .pipe(catchError((errMessage) => {
-                this.errorReceived = true;
-                this.isOrderProcessing = false;
-                return Observable.throw(errMessage); 
-            }))
+        this.basketService.setBasketCheckout(basketCheckout).pipe(catchError((errMessage) => {
+            this.errorReceived = true;
+            this.isOrderProcessing = false;
+            return Observable.throw(errMessage);
+        }))
             .subscribe(res => {
                 this.router.navigate(['orders']);
             });

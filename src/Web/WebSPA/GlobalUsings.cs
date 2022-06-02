@@ -1,11 +1,10 @@
-﻿global using eShopConContainers.WebSPA;
+﻿global using eCommerceOnContainers.WebSPA;
 global using Microsoft.AspNetCore;
 global using Microsoft.AspNetCore.Hosting;
 global using Microsoft.Extensions.Configuration;
 global using Microsoft.Extensions.Logging;
 global using Serilog;
 global using System.IO;
-global using eShopOnContainers.WebSPA;
 global using HealthChecks.UI.Client;
 global using Microsoft.AspNetCore.Antiforgery;
 global using Microsoft.AspNetCore.Builder;
@@ -23,5 +22,3 @@ global using WebSPA.Infrastructure;
 global using Microsoft.Extensions.Options;
 global using System.IO.Compression;
 global using System.Linq;
-global using System.Collections.Generic;
-global using System.Threading.Tasks;
