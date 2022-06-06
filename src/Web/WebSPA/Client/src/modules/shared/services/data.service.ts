@@ -99,6 +99,8 @@ export class DataService {
             options["headers"] = new HttpHeaders()
                 .append('authorization', 'Bearer ' + this.securityService.GetToken())
                 .append('x-requestid', Guid.newGuid());
+
+            console.log("new guid" + Guid.newGuid());
         }
         else if (this.securityService) {
             options["headers"] = new HttpHeaders()
