@@ -34,7 +34,6 @@ export class BasketComponent implements OnInit {
         this.basketSerive.setBasket(this.basket).subscribe(x => 
             {
                 this.basketSerive.updateQuantity();
-                console.log('basket updated: ' + x)
             }
         );
     }
@@ -51,7 +50,6 @@ export class BasketComponent implements OnInit {
             .subscribe(
             x => {
                 this.errorMessages = [];
-                console.log('basket updated: ' + x);
             },
             errMessage => this.errorMessages = errMessage.messages);
         return setBasketObservable;

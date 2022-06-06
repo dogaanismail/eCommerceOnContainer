@@ -74,7 +74,6 @@ export class CatalogComponent implements OnInit {
     }
 
     onPageChanged(value: any) {
-        console.log('catalog pager event fired' + value);
         event.preventDefault();
         this.paginationInfo.actualPage = value;
         this.getCatalog(this.paginationInfo.itemsPage, value);

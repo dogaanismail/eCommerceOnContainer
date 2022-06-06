@@ -53,9 +53,6 @@ export class OrdersService {
         let basket = this.basketService.basket;
         let identityInfo = this.identityService.UserData;
 
-        console.log(basket);
-        console.log(identityInfo);
-
         // Identity data mapping:
         order.street = identityInfo.address_street;
         order.city = identityInfo.address_city;

@@ -23,8 +23,6 @@ export class OrdersDetailComponent implements OnInit {
     getOrder(id: number) {
         this.service.getOrder(id).subscribe(order => {
             this.order = order;
-            console.log('order retrieved: ' + order.ordernumber);
-            console.log(this.order);
         });
     }
 }

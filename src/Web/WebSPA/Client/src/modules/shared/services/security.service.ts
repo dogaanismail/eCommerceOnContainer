@@ -112,8 +112,6 @@ export class SecurityService {
             return result;
         }, {});
 
-        console.log(result);
-
         let token = '';
         let id_token = '';
         let authResponseIsValid = false;
@@ -121,7 +119,6 @@ export class SecurityService {
         if (!result.error) {
 
             if (result.state !== this.storage.retrieve('authStateControl')) {
-                console.log('AuthorizedCallback incorrect state');
             } else {
 
                 token = result.access_token;

@@ -42,7 +42,7 @@ export class DataService {
     private doPost(url: string, data: any, needId: boolean, params?: any): Observable<Response> {
         let options = {};
         this.setHeaders(options, needId);
-
+        console.log("do post icine girdi");
         return this.http.post(url, data, options)
             .pipe(
                 tap((res: Response) => {
@@ -65,6 +65,7 @@ export class DataService {
     }
 
     private handleError(error: any) {
+
         if (error.error instanceof ErrorEvent) {
             // A client-side or network error occurred. Handle it accordingly.
             console.error('Client side network error occurred:', error.error.message);
@@ -99,8 +100,6 @@ export class DataService {
             options["headers"] = new HttpHeaders()
                 .append('authorization', 'Bearer ' + this.securityService.GetToken())
                 .append('x-requestid', Guid.newGuid());
-
-            console.log("new guid" + Guid.newGuid());
         }
         else if (this.securityService) {
             options["headers"] = new HttpHeaders()

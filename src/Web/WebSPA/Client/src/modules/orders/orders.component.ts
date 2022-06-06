@@ -18,7 +18,10 @@ export class OrdersComponent implements OnInit {
 
     orders: IOrder[];
 
-    constructor(private service: OrdersService, private configurationService: ConfigurationService, private signalrService: SignalrService) { }
+    constructor(
+        private service: OrdersService, 
+        private configurationService: ConfigurationService, 
+        private signalrService: SignalrService) { }
 
     ngOnInit() {
         if (this.configurationService.isReady) {
@@ -40,7 +43,6 @@ export class OrdersComponent implements OnInit {
             .subscribe(orders => {
                 this.orders = orders;
                 this.oldOrders = this.orders;
-                console.log('orders items retrieved: ' + orders.length);
         });
     }
 

@@ -8,6 +8,7 @@ import { IOrder } from '../../shared/models/order.model';
 
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
+import { SecurityService } from 'modules/shared/services/security.service';
 
 @Component({
     selector: 'esh-orders_new .esh-orders_new .mb-5',
@@ -20,7 +21,13 @@ export class OrdersNewComponent implements OnInit {
     errorReceived: boolean;
     order: IOrder;
 
-    constructor(private orderService: OrdersService, private basketService: BasketService, fb: FormBuilder, private router: Router) {
+    constructor(
+        private orderService: OrdersService,
+        private basketService: BasketService,
+        fb: FormBuilder,
+        private router: Router,
+        private securityService: SecurityService) {
+
         // Obtain user profile information
         this.order = orderService.mapOrderAndIdentityInfoNewOrder();
         this.newOrderForm = fb.group({
@@ -48,6 +55,7 @@ export class OrdersNewComponent implements OnInit {
         this.order.cardholdername = this.newOrderForm.controls['cardholdername'].value;
         this.order.cardexpiration = new Date(20 + this.newOrderForm.controls['expirationdate'].value.split('/')[1], this.newOrderForm.controls['expirationdate'].value.split('/')[0]);
         this.order.cardsecuritynumber = this.newOrderForm.controls['securitycode'].value;
+        this.order.buyer = this.securityService.UserData.sub;
         let basketCheckout = this.basketService.mapBasketInfoCheckout(this.order);
         this.basketService.setBasketCheckout(basketCheckout).pipe(catchError((errMessage) => {
             this.errorReceived = true;

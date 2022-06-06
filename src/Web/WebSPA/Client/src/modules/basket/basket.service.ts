@@ -27,7 +27,13 @@ export class BasketService {
     private basketUpdateSource = new Subject();
     basketUpdate$ = this.basketUpdateSource.asObservable();
 
-    constructor(private service: DataService, private authService: SecurityService, private basketWrapperService: BasketWrapperService, private router: Router, private configurationService: ConfigurationService, private storageService: StorageService) {
+    constructor(
+        private service: DataService,
+        private authService: SecurityService,
+        private basketWrapperService: BasketWrapperService,
+        private router: Router,
+        private configurationService: ConfigurationService,
+        private storageService: StorageService) {
         this.basket.items = [];
 
         // Init:
@@ -109,6 +115,7 @@ export class BasketService {
         basketCheckout.cardholdername = order.cardholdername;
         basketCheckout.total = 0;
         basketCheckout.expiration = order.expiration;
+        basketCheckout.buyer = this.authService.UserData.sub;
 
         return basketCheckout;
     }
